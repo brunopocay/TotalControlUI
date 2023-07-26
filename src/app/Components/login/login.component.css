@@ -1,0 +1,13 @@
+.container{
+    margin-top: 50px !important;
+}
+
+a{
+    cursor: pointer;
+}
+
+@media screen and (max-width:550px) {
+    #register{
+        width:auto !important;
+    }
+}
