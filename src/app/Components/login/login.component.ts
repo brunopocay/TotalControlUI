@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Pessoas } from 'src/app/Models/Pessoas';
+import { Users } from 'src/app/Models/Users';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 @Component({
@@ -10,10 +11,18 @@ import { Pessoas } from 'src/app/Models/Pessoas';
 export class LoginComponent {
   activeTab: string = 'login';
 
-  pessoa?: Pessoas;
+  user?: Users;
+
+  constructor(private authService: AuthService){}
   
   showTab(tab: string) {
     this.activeTab = tab;
+  }
+
+  getMe(){
+    this.authService.getMe().subscribe((name: string) => {
+      console.log(name)
+    })
   }
 
   

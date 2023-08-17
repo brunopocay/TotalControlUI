@@ -15,6 +15,7 @@
     <div class="form-group mb-2">
       <label class="form-label" for="registerName">Nome</label>
       <input type="text" id="registerName" class="form-control" formControlName="Nome" minlength="3"/>
+
       <div *ngIf="(registrationForm.get('Nome')?.invalid && registrationForm.get('Nome')?.touched) || registrationForm.get('Nome')?.dirty">
         <div *ngIf="registrationForm.get('Nome')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('Nome')?.errors?.['minlength']" class="alert alert-danger">Campo deve ter no mínimo 3 caracteres</div>
@@ -26,25 +27,27 @@
       <label class="form-label" for="registerEmail">Email</label>
       <input type="email" id="registerEmail" class="form-control" formControlName="Email" required email
       pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"/>
+
       <div *ngIf="(registrationForm.get('Email')?.invalid && registrationForm.get('Email')?.touched) || registrationForm.get('Email')?.dirty">
         <div *ngIf="registrationForm.get('Email')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('Email')?.errors?.['pattern']" class="alert alert-danger">Email inválido</div>
       </div>
     </div>
 
-    <div class="form-group mb-2">
+    <!-- <div class="form-group mb-2">
       <label class="form-label" for="registerCPF">CPF</label>
       <input type="text" id="registerCPF" class="form-control" formControlName="Documento" maxlength="11" required minlength="11"/>
       <div *ngIf="(registrationForm.get('Documento')?.invalid && registrationForm.get('Documento')?.touched) || registrationForm.get('Documento')?.dirty">
         <div *ngIf="registrationForm.get('Documento')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('Documento')?.errors?.['minlength']" class="alert alert-danger">Campo deve ter no mínimo 11 caracteres</div>
       </div> 
-    </div>
+    </div> -->
 
     <div class="row form-group">  
         <div class="col form-group mb-2">
           <label class="mb-2" for="dataNasc">Data Nascimento</label>
           <input type="date" id="dataNasc" class="form-control" formControlName="DataNasc" required/>
+
           <div *ngIf="(registrationForm.get('DataNasc')?.invalid && registrationForm.get('DataNasc')?.touched) || registrationForm.get('DataNasc')?.dirty">
             <div *ngIf="registrationForm.get('DataNasc')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
           </div>
@@ -52,11 +55,12 @@
         <div class="col mb-2">
           <label class="mb-2" for="sexo">Sexo</label>     
           <select id="sexo" class="form-select" formControlName="Sexo" required>
-            <option selected>Escolha o sexo</option>
+            <option selected disabled value="">Escolha o sexo</option>
             <option value="1">Feminino</option>
             <option value="2">Masculino</option>
           </select>
         </div>   
+
         <div *ngIf="(registrationForm.get('Sexo')?.invalid && registrationForm.get('Sexo')?.touched) || registrationForm.get('Sexo')?.dirty">
           <div *ngIf="registrationForm.get('Sexo')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         </div> 
@@ -67,6 +71,7 @@
     <div class="col form-group mb-2">
       <label class="mb-2" for="password">Digite a senha</label>
       <input type="password" id="password" class="form-control" formControlName="Senha" required/>
+
       <div *ngIf="(registrationForm.get('Senha')?.invalid && registrationForm.get('Senha')?.touched) || registrationForm.get('Senha')?.dirty">
         <div *ngIf="registrationForm.get('Senha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
       </div>
@@ -74,6 +79,7 @@
     <div class="col mb-2">
       <label class="mb-2" for="repeatPassword">Confirme a senha</label>     
       <input id="repeatPassword" type="password" class="form-control" formControlName="ConfirmarSenha" required/>
+
       <div *ngIf="(registrationForm.get('ConfirmarSenha')?.invalid && registrationForm.get('ConfirmarSenha')?.touched) || registrationForm.get('ConfirmarSenha')?.dirty">
         <div *ngIf="registrationForm.get('ConfirmarSenha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('ConfirmarSenha')?.errors?.['equalsTo']" class="alert alert-danger">As senhas não conferem.</div>

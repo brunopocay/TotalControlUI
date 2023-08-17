@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pessoas } from '../Models/Pessoas';
+import { Users } from '../Models/Users';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PessoasServices {
+export class UsersServices {
 
-  private url = "Pessoas"
+  private url = "Users/register"
   constructor(private http: HttpClient) { }
 
-  public RegisterNewPessoa(pessoa: Pessoas): Observable<Pessoas>{
-    return this.http.post<Pessoas>(`${environment.apiURL}/${this.url}`, pessoa)
+  public Register(user: Users): Observable<Users>{
+    return this.http.post<Users>(`${environment.apiURL}/${this.url}`, user)
   }
+
 }

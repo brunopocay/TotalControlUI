@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormValidators } from '../../form_validators/form-validators';
 import { Router } from '@angular/router';
-import { Pessoas } from 'src/app/Models/Pessoas';
-import { PessoasServices } from 'src/app/Services/pessoas.service';
+import { Users } from 'src/app/Models/Users';
+import { UsersServices } from 'src/app/Services/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,14 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup ;
-  Users: Pessoas ;
   
-  constructor (private router: Router, private formBuilder:FormBuilder, private service: PessoasServices){}
+  constructor (private router: Router, private formBuilder:FormBuilder, private service: UsersServices){}
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
       Nome: ['', Validators.required],
-      Documento: ['', Validators.required],
       DataNasc: ['', Validators.required],
       Sexo: ['', Validators.required],
       Email: ['', Validators.required],
@@ -34,10 +32,8 @@ export class RegisterComponent implements OnInit {
     if(this.registrationForm.valid)
     {
       const formData = this.registrationForm.value;
-      this.service.RegisterNewPessoa(formData).subscribe((pessoas: Pessoas) => {
-        this.Users = pessoas;   
-        this.router.navigate(['/cadastro']);    
-      });
+      this.service.Register(formData).subscribe();
+      this.router.navigate(['/cadastro']);         
     }
     else
     {

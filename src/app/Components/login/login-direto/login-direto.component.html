@@ -1,5 +1,5 @@
 <div class="tab-pane fade show active" role="tabpanel">
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" >
     <div class="text-center mb-3">
       <p>Faça login com:</p>
 
@@ -13,14 +13,23 @@
 
     <p class="text-center">Ou :</p>
 
-    <div class="form-outline mb-2">
-      <input type="email" id="loginName" class="form-control" />
-      <label class="form-label" for="loginName">Email</label>
+    <div class="form-group mb-2">
+      <label class="form-label" for="loginEmail">Email</label>
+      <input type="text" id="loginEmail" class="form-control" formControlName="Email" minlength="3"/>
+
+      <div *ngIf="(loginForm.get('Email')?.invalid && loginForm.get('Email')?.touched) || loginForm.get('Email')?.dirty">
+        <div *ngIf="loginForm.get('Email')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
+        <div *ngIf="loginForm.get('Email')?.errors?.['minlength']" class="alert alert-danger">Campo deve ter no mínimo 3 caracteres</div>
+      </div>
     </div>
 
     <div class="form-outline mb-2">
-      <input type="password" id="loginPassword" class="form-control" />
       <label class="form-label" for="loginPassword">Senha</label>
+      <input type="password" id="loginPassword" class="form-control" formControlName="Senha" required />
+
+      <div *ngIf="(loginForm.get('Senha')?.invalid && loginForm.get('Senha')?.touched) || loginForm.get('Senha')?.dirty">
+        <div *ngIf="loginForm.get('Senha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
+      </div>     
     </div>
 
     <div class="row mb-2">
@@ -36,13 +45,13 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block mb-4 w-100">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block mb-4 w-100">Login <i class="fa-solid fa-right-to-bracket"></i></button>
 
-    <div class="text-center">
-      <p>Ainda não é cadastrado? <a href="#!">Cadastre-se <i class="fa-solid fa-user-plus"></i></a></p>
-    </div>
 
   </form>
+  
 </div>
+
+
 
 

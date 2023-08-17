@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Pessoas } from './Models/Pessoas';
-import { PessoasServices } from './Services/pessoas.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +7,4 @@ import { PessoasServices } from './Services/pessoas.service';
 })
 export class AppComponent {
   title = 'TotalControlUI';
-
 }
