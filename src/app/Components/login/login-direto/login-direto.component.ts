@@ -35,7 +35,7 @@ export class LoginDiretoComponent implements OnInit {
       const formData = this.loginForm.value;
       this.authService.login(formData).subscribe((token: string) => {
         localStorage.setItem('authToken', token);
-        this.router.navigate(['/cadastro']);
+        this.router.navigate(['/usuario']);
       })
     }
   }

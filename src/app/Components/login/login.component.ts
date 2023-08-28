@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Users } from 'src/app/Models/Users';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
 
@@ -8,22 +8,22 @@ import { AuthService } from 'src/app/Services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   activeTab: string = 'login';
 
-  user?: Users;
+  constructor(private authService: AuthService, private router: Router){}
 
-  constructor(private authService: AuthService){}
+  ngOnInit(): void {
+    if(this.UserIsLoggedIn() == true){
+      this.router.navigate(['usuario']);
+    }
+  }
+
+  UserIsLoggedIn():boolean {
+    return this.authService.isAuthenticated();
+  }
   
   showTab(tab: string) {
     this.activeTab = tab;
-  }
-
-  getMe(){
-    this.authService.getMe().subscribe((name: string) => {
-      console.log(name)
-    })
-  }
-
-  
+  } 
 }

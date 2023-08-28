@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
-import { CadastroComponent } from './Components/cadastro/cadastro.component';
 import { CounterComponent } from './Components/counter/counter.component';
+import { authGuard } from './Guards/auth.guard';
+import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-logged-in.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [authGuard]},
   { path: 'login', component: LoginComponent },
-  { path: 'cadastro', component: CadastroComponent },
-  { path: 'counter', component: CounterComponent } 
+  { path: 'usuario', component: UserIsLoggedInComponent, canActivate: [authGuard]},
+  { path: 'counter', component: CounterComponent, canActivate: [authGuard]},
 ];
 
 @NgModule({
