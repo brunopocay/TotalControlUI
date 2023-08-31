@@ -10,7 +10,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class UserIsLoggedInComponent implements OnInit {
 
   Users: Users = {
+    Nome:'',
     Email: '',
+    Sexo: '',
+    DataNasc: '',
   };
 
   constructor(private authService: AuthService){}
@@ -20,8 +23,12 @@ export class UserIsLoggedInComponent implements OnInit {
   }
   
   getMe(){
-    this.authService.GetUser().subscribe((user: string) => {
-      this.Users.Email = user
+    this.authService.GetUser().subscribe((claim: string) => {
+      this.Users.Nome = claim[0];
+      this.Users.Email = claim[1];
+      this.Users.Sexo = claim[2];
+      this.Users.DataNasc = claim[3];
+      console.log(claim)
     })
   }
 }

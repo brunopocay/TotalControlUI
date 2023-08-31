@@ -1,6 +1,6 @@
 export interface Users {
     Nome?: string;    
-    Sexo?: number | null;
+    Sexo?: string | null;
     DataNasc?: string ;
     Email: string;
     Senha?: string;
