@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/Models/Users';
 import { AuthService } from 'src/app/Services/auth.service';
+import { DialogComponentService } from 'src/app/Services/dialog-component.service';
+import { ModalLogoutComponent } from './modal-logout/modal-logout.component';
+
 
 @Component({
   selector: 'app-user-is-logged-in',
@@ -16,19 +19,23 @@ export class UserIsLoggedInComponent implements OnInit {
     DataNasc: '',
   };
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private modalLogout: DialogComponentService){}
 
   ngOnInit(): void {
    this.getMe()
   }
-  
+
+  public openModal() {
+    this.modalLogout.confirm('Logout', 'Deseja fazer logout do sistema ?');
+  }
+
   getMe(){
     this.authService.GetUser().subscribe((claim: string) => {
-      this.Users.Nome = claim[0];
-      this.Users.Email = claim[1];
-      this.Users.Sexo = claim[2];
-      this.Users.DataNasc = claim[3];
-      console.log(claim)
+      const parseClaims = JSON.parse(claim);
+      this.Users.Nome = parseClaims[0];
+      this.Users.Email = parseClaims[1];
+      this.Users.Sexo = parseClaims[2];
+      this.Users.DataNasc = parseClaims[3];
     })
   }
 }

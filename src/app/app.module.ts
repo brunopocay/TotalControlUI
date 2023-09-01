@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './Services/auth.interceptor';
 import { authGuard } from './Guards/auth.guard';
 import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-logged-in.component';
+import { ModalLogoutComponent } from './Components/user-is-logged-in/modal-logout/modal-logout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-
     UserIsLoggedInComponent,
     LoginDiretoComponent,
     RegisterComponent,
-    UserIsLoggedInComponent
+    UserIsLoggedInComponent,
+    ModalLogoutComponent 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
