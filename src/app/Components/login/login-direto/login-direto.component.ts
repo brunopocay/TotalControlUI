@@ -18,6 +18,8 @@ export class LoginDiretoComponent implements OnInit {
 
   constructor(private router:Router, private authService: AuthService, private formbuilder: FormBuilder) { }
 
+  showSpan: boolean = false;
+
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
       Email: ['', Validators.required],
@@ -33,10 +35,15 @@ export class LoginDiretoComponent implements OnInit {
     if(this.loginForm.valid)
     {
       const formData = this.loginForm.value;
-      this.authService.login(formData).subscribe((token: string) => {
-        localStorage.setItem('authToken', token);
-        this.router.navigate(['/usuario']);
-      })
+      this.showSpan = true;
+
+      setTimeout(() => {
+        this.authService.login(formData).subscribe((token: string) => {
+          this.showSpan = false;
+          localStorage.setItem('authToken', token);
+          this.router.navigate(['/usuario']);
+        })
+      },2000);
     }
   }
 }
