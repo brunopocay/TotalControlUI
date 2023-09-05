@@ -1,20 +1,15 @@
 <div class="tab-pane fade show active" role="tabpanel">
   <form [formGroup]="registrationForm" (ngSubmit)="RegisterNewUser()">
-    <div class="text-center mb-3">
-      <p>Cadastre-se com:</p>
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fa-brands fa-google fa-2xl"></i>
-      </button>
-      <button type="button" class="btn btn-link btn-floating mx-1">
-        <i class="fa-brands fa-github fa-2xl"></i>
-      </button>      
+    
+    <div *ngIf="showError" class="d-flex justify-content-center">
+      <div>
+        <span class="error-message">{{responseMessageError}}</span>
+      </div>
     </div>
-
-    <p class="text-center">Ou :</p>
 
     <div class="form-group mb-2">
       <label class="form-label" for="registerName">Nome</label>
-      <input type="text" id="registerName" class="form-control" formControlName="Nome" minlength="3"/>
+      <input type="text" id="registerName" class="form-control" placeholder="Digite aqui seu nome" formControlName="Nome" minlength="3"/>
 
       <div *ngIf="(registrationForm.get('Nome')?.invalid && registrationForm.get('Nome')?.touched) || registrationForm.get('Nome')?.dirty">
         <div *ngIf="registrationForm.get('Nome')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
@@ -25,12 +20,13 @@
     
     <div class="form-group mb-2">
       <label class="form-label" for="registerEmail">Email</label>
-      <input type="email" id="registerEmail" class="form-control" formControlName="Email" required email
+      <input type="email" id="registerEmail" class="form-control" placeholder="Digite aqui seu email" formControlName="Email" required email
       pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"/>
 
       <div *ngIf="(registrationForm.get('Email')?.invalid && registrationForm.get('Email')?.touched) || registrationForm.get('Email')?.dirty">
         <div *ngIf="registrationForm.get('Email')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('Email')?.errors?.['pattern']" class="alert alert-danger">Email inválido</div>
+        <div *ngIf="showErrorEmail" class="alert alert-danger">{{responseMessageError}} Tente outro email</div>
       </div>
     </div>
 
@@ -70,7 +66,7 @@
   <div class="row form-group mt-2">
     <div class="col form-group mb-2">
       <label class="mb-2" for="password">Digite a senha</label>
-      <input type="password" id="password" class="form-control" formControlName="Senha" required/>
+      <input type="password" id="password" class="form-control" placeholder="Digite a senha" formControlName="Senha" required/>
 
       <div *ngIf="(registrationForm.get('Senha')?.invalid && registrationForm.get('Senha')?.touched) || registrationForm.get('Senha')?.dirty">
         <div *ngIf="registrationForm.get('Senha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
@@ -78,7 +74,7 @@
     </div>
     <div class="col mb-2">
       <label class="mb-2" for="repeatPassword">Confirme a senha</label>     
-      <input id="repeatPassword" type="password" class="form-control" formControlName="ConfirmarSenha" required/>
+      <input id="repeatPassword" type="password" class="form-control" placeholder="Repita a senha" formControlName="ConfirmarSenha" required/>
 
       <div *ngIf="(registrationForm.get('ConfirmarSenha')?.invalid && registrationForm.get('ConfirmarSenha')?.touched) || registrationForm.get('ConfirmarSenha')?.dirty">
         <div *ngIf="registrationForm.get('ConfirmarSenha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
@@ -88,7 +84,7 @@
   </div>
 
     
-    <div class="form-check d-flex justify-content-center mb-4">
+    <div class="form-check d-flex justify-content-center mt-4 mb-2">
       <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
         aria-describedby="registerCheckHelpText" />
       <label class="form-check-label" for="registerCheck">
@@ -97,9 +93,24 @@
     </div>
 
     
-    <button type="submit" class="btn btn-primary btn-block mb-4 w-100" [disabled]="registrationForm.invalid" >
+    <button type="submit" class="btn btn-primary btn-block w-100" [disabled]="registrationForm.invalid" >
       Cadastrar <i class="fa-solid fa-user-plus"></i>
     </button>
+    <div class="row mb-2">    
+      <div class="col md-6 d-flex justify-content-end">
+        <a href="">Esqueceu a senha? <i class="fa-solid fa-unlock"></i></a>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <p>Faça cadastro com</p>
+      <button type="button" class="btn btn-floating mx-1">
+        <i class="fa-brands fa-google fa-2xl"></i>
+      </button>
+      <button type="button" class="btn btn-floating mx-1">
+        <i class="fa-brands fa-github fa-2xl"></i>
+      </button>      
+    </div>
   </form>
 </div>
 

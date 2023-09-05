@@ -1,3 +1,16 @@
-label,p{
+label,p,a{
     font-weight:bold;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
 }

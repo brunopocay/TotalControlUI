@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Users } from 'src/app/Models/Users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +15,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup ;
+  showErrorEmail: boolean = false;
+  showError:boolean = false;
+  responseMessageError: string = "";
+
   
   constructor (private router: Router, private formBuilder:FormBuilder, private service: AuthService){}
 
@@ -28,13 +34,35 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  RegisterNewUser(){ 
-    if(this.registrationForm.valid){       
-        const formData = this.registrationForm.value;
-        this.service.register(formData).subscribe((token: string) => {
+  RegisterNewUser() {
+    if (this.registrationForm.valid) {
+      const formData = this.registrationForm.value;
+
+      setTimeout(() => {
+        this.service.register(formData).pipe(
+          catchError((error: HttpErrorResponse) => {
+            if (error.status === 0) {
+              this.showError = true;
+              this.responseMessageError = "Erro interno de servidor";
+              setTimeout(() => {
+                this.showError = false;
+              }, 2500);
+            } else {
+              this.showErrorEmail = true;
+              this.responseMessageError = error.error;
+              setTimeout(() => {
+                this.showErrorEmail = false;
+              }, 3000);
+            }
+            return throwError(() => error);
+          })
+        )
+        .subscribe((token: string) => {
           localStorage.setItem('authToken', token);
           this.router.navigate(['/usuario']);
-        })    
-      }        
+        });
+      }, 250);
     }
+  }
+  
 }

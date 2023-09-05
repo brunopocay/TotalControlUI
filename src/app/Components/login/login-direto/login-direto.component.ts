@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { UserRequest } from 'src/app/Models/UserRequest';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { TimeoutError, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login-direto',
@@ -19,6 +21,8 @@ export class LoginDiretoComponent implements OnInit {
   constructor(private router:Router, private authService: AuthService, private formbuilder: FormBuilder) { }
 
   showSpan: boolean = false;
+  responseError: boolean = false;
+  responseMessageError: string = "";
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
@@ -31,21 +35,43 @@ export class LoginDiretoComponent implements OnInit {
     this.loginComponent.showTab('register');
   }
   
-  login(){
-    if(this.loginForm.valid)
-    {
+  login() {
+    if (this.loginForm.valid) {
+      
       const formData = this.loginForm.value;
       this.showSpan = true;
 
       setTimeout(() => {
-        this.authService.login(formData).subscribe((token: string) => {
+        this.authService.login(formData).pipe(
+          catchError((error: HttpErrorResponse) => {
+            if (error.status === 0) {
+              this.showSpan = false;
+              this.responseError = true;
+              this.responseMessageError = "Erro interno do servidor";
+              setTimeout(() => {
+                this.responseError = false;
+              },2500)
+            } else {
+              this.showSpan = false;
+              this.responseError = true;   
+              this.responseMessageError = error.error; 
+              setTimeout(() => {
+                this.responseError = false;
+              },2000) 
+            }
+            return throwError(() => error);
+          })
+        )
+        .subscribe((token: string) => {
           this.showSpan = false;
+          this.responseError = false;
           localStorage.setItem('authToken', token);
           this.router.navigate(['/usuario']);
-        })
-      },2000);
+        });
+      }, 2000);
     }
   }
+  
 }
 
 
