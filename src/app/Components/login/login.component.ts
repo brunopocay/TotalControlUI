@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   activeTab: string = 'login';
@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.UserIsLoggedIn() == true){
-      this.router.navigate(['usuario']);
-    }
+      this.router.navigate(['usuario']);     
+    }    
   }
 
   UserIsLoggedIn():boolean {

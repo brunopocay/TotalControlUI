@@ -1,6 +1,6 @@
 <header *ngIf="UserIsLoggedIn()">
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow"
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">TotalControl</a>
@@ -23,20 +23,17 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link" [routerLink]="['/']">Dashboard</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>  
+            <a class="nav-link" [routerLink]="['/counter']">Contas</a>
+          </li>           
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/usuario']"
-              >Meus Dados</a
-            >
+            <a class="nav-link" [routerLink]="['/usuario']">Meus Dados</a>
           </li>            
         </ul>
       </div>
     </div>
   </nav>
+  <div class="underline"></div>
 </header>

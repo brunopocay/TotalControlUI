@@ -1,5 +1,9 @@
+.container{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .user-profile {
-    border: 1px solid #ccc;
+    border: 1px solid black;
     padding: 20px;
     border-radius: 5px;
     width: 300px;
@@ -10,4 +14,8 @@
 .user-profile img {
     max-width: 200px;
     border-radius: 50%;
+}
+
+p:hover{
+    cursor: auto;
 }
