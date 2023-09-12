@@ -9,7 +9,12 @@
 
     <div class="form-group mb-2">
       <label class="form-label" for="registerName">Nome</label>
-      <input type="text" id="registerName" class="form-control" placeholder="Digite aqui seu nome" formControlName="Nome" minlength="3"/>
+      <div class="input-group">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+        </div>
+        <input type="text" id="registerName" class="form-control" placeholder="Digite aqui seu nome" formControlName="Nome" minlength="3"/>
+      </div>
 
       <div *ngIf="(registrationForm.get('Nome')?.invalid && registrationForm.get('Nome')?.touched) || registrationForm.get('Nome')?.dirty">
         <div *ngIf="registrationForm.get('Nome')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
@@ -20,8 +25,13 @@
     
     <div class="form-group mb-2">
       <label class="form-label" for="registerEmail">Email</label>
-      <input type="email" id="registerEmail" class="form-control" placeholder="Digite aqui seu email" formControlName="Email" required email
-      pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"/>
+      <div class="input-group">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+        </div>
+          <input type="email" id="registerEmail" class="form-control" placeholder="Digite aqui seu email" formControlName="Email" required email  
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"/>
+      </div>
 
       <div *ngIf="(registrationForm.get('Email')?.invalid && registrationForm.get('Email')?.touched) || registrationForm.get('Email')?.dirty">
         <div *ngIf="registrationForm.get('Email')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
@@ -66,16 +76,50 @@
   <div class="row form-group mt-2">
     <div class="col form-group mb-2">
       <label class="mb-2" for="password">Digite a senha</label>
-      <input type="password" id="password" class="form-control" placeholder="Digite a senha" formControlName="Senha" required/>
-
+      <div class="input-group">
+        <input 
+          [type]="fieldTextType ? 'text' : 'password'" 
+          id="password" 
+          class="form-control" 
+          placeholder="Digite a senha" 
+          formControlName="Senha" 
+          required
+        />
+        <div class="div input-group-append">
+          <span class="input-group-text">
+            <i
+              class="fa"
+              [ngClass]="{'fa-eye-slash' : !fieldTextType, 'fa-eye' : fieldTextType}"
+              (click)="toggleFieldTextType()"
+              ></i>     
+          </span>
+        </div>
+      </div>     
       <div *ngIf="(registrationForm.get('Senha')?.invalid && registrationForm.get('Senha')?.touched) || registrationForm.get('Senha')?.dirty">
         <div *ngIf="registrationForm.get('Senha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
       </div>
     </div>
-    <div class="col mb-2">
-      <label class="mb-2" for="repeatPassword">Confirme a senha</label>     
-      <input id="repeatPassword" type="password" class="form-control" placeholder="Repita a senha" formControlName="ConfirmarSenha" required/>
-
+    <div class="col form-group mb-2">
+      <label class="mb-2" for="repeatPassword">Confirme a senha</label> 
+      <div class="input-group">
+        <input 
+          [type]="repeatFieldTextType ? 'text' : 'password'" 
+          id="repeatPassword" 
+          class="form-control" 
+          placeholder="Digite a senha" 
+          formControlName="ConfirmarSenha" 
+          required
+        />
+        <div class="div input-group-append">
+          <span class="input-group-text">
+            <i
+              class="fa"
+              [ngClass]="{'fa-eye-slash' : !repeatFieldTextType, 'fa-eye' : repeatFieldTextType}"
+              (click)="repeatToggleFieldTextType()"
+              ></i>     
+          </span>
+        </div>
+      </div>     
       <div *ngIf="(registrationForm.get('ConfirmarSenha')?.invalid && registrationForm.get('ConfirmarSenha')?.touched) || registrationForm.get('ConfirmarSenha')?.dirty">
         <div *ngIf="registrationForm.get('ConfirmarSenha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="registrationForm.get('ConfirmarSenha')?.errors?.['equalsTo']" class="alert alert-danger">As senhas não conferem.</div>

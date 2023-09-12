@@ -23,6 +23,7 @@ export class LoginDiretoComponent implements OnInit {
   showSpan: boolean = false;
   responseError: boolean = false;
   responseMessageError: string = "";
+  fieldTextType:boolean;
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
@@ -33,6 +34,10 @@ export class LoginDiretoComponent implements OnInit {
 
   registerOnClick(){
     this.loginComponent.showTab('register');
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
   
   login() {

@@ -6,6 +6,10 @@ a{
     text-decoration: none;
 }
 
+span{
+    height: 38px;
+}
+
 a:hover{
     text-decoration: underline;
 }

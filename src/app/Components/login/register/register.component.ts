@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   showErrorEmail: boolean = false;
   showError:boolean = false;
   responseMessageError: string = "";
+  fieldTextType:boolean;
+  repeatFieldTextType:boolean;
 
   
   constructor (private router: Router, private formBuilder:FormBuilder, private service: AuthService){}
@@ -33,6 +35,13 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  toggleFieldTextType(){
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  repeatToggleFieldTextType(){
+    this.repeatFieldTextType = !this.repeatFieldTextType;
+  }
 
   RegisterNewUser() {
     if (this.registrationForm.valid) {

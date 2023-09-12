@@ -16,25 +16,46 @@
         </div>
       </div>
 
-    
-    <div class="form-group mb-2">
+    <div class="mb-2">
       <label class="form-label " for="loginEmail">Email</label>
-      <input type="text" id="loginEmail" class="form-control" placeholder="Digite seu email cadastrado" formControlName="Email" minlength="3"/>
-      
+      <div class="input-group">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+        </div>
+        <input type="text" id="loginEmail" class="form-control" placeholder="Digite seu email cadastrado" formControlName="Email" minlength="3"/>     
+      </div>
       <div *ngIf="(loginForm.get('Email')?.invalid && loginForm.get('Email')?.touched) || loginForm.get('Email')?.dirty">
         <div *ngIf="loginForm.get('Email')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
         <div *ngIf="loginForm.get('Email')?.errors?.['minlength']" class="alert alert-danger">Campo deve ter no mínimo 3 caracteres</div>
       </div>
     </div>
     
-    <div class="form-outline mb-2">
+    <div class="mb-2">
       <label class="form-label" for="loginPassword">Senha</label>
-      <input type="password" id="loginPassword" class="form-control" placeholder="Sua senha" formControlName="Senha" required />
-      
+      <div class="input-group">
+        <input 
+          [type]="fieldTextType ? 'text' : 'password'"
+          id="loginPassword" 
+          class="form-control" 
+          placeholder="Sua senha" 
+          formControlName="Senha" 
+          required />
+        <div class="input-group-append">
+          <span class="input-group-text"> 
+            <i
+            class="fa"
+            [ngClass]="{'fa-eye-slash': !fieldTextType, 'fa-eye': fieldTextType }"
+            (click)="toggleFieldTextType()"
+            ></i>
+          </span>
+        </div>
+      </div>
       <div *ngIf="(loginForm.get('Senha')?.invalid && loginForm.get('Senha')?.touched) || loginForm.get('Senha')?.dirty">
         <div *ngIf="loginForm.get('Senha')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
-      </div>     
+      </div>
     </div>
+    
+
     <div class="col md-6 d-flex">
       <div class="form-check mb-3 mb-md-0">
         <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
