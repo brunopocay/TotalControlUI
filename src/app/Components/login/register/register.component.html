@@ -65,11 +65,11 @@
             <option value="0">Feminino</option>
             <option value="1">Masculino</option>
           </select>
-        </div>   
-
-        <div *ngIf="(registrationForm.get('Sexo')?.invalid && registrationForm.get('Sexo')?.touched) || registrationForm.get('Sexo')?.dirty">
-          <div *ngIf="registrationForm.get('Sexo')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
-        </div> 
+             
+          <div *ngIf="(registrationForm.get('Sexo')?.invalid && registrationForm.get('Sexo')?.touched) || registrationForm.get('Sexo')?.dirty">
+            <div *ngIf="registrationForm.get('Sexo')?.errors?.['required']" class="alert alert-danger">Campo obrigatório</div>
+          </div> 
+        </div>
     </div>
 
     
