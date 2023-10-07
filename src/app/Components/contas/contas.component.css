@@ -2,6 +2,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  
 }
 
 article {
@@ -20,7 +21,7 @@ aside {
 
 p {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .content {

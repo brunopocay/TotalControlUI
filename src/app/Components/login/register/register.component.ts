@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormValidators } from '../../form_validators/form-validators';
+import { FormValidators } from '../../../Helpers/form_validators/form-validators';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/Models/Users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

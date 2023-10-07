@@ -10,73 +10,74 @@ import { TimeoutError, catchError, throwError } from 'rxjs';
 @Component({
   selector: 'app-login-direto',
   templateUrl: './login-direto.component.html',
-  styleUrls: ['./login-direto.component.css']
+  styleUrls: ['./login-direto.component.css'],
 })
 export class LoginDiretoComponent implements OnInit {
-  
   user: UserRequest;
   loginForm: FormGroup;
   @ViewChild(LoginComponent) loginComponent!: LoginComponent;
 
-  constructor(private router:Router, private authService: AuthService, private formbuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private formbuilder: FormBuilder
+  ) {}
 
   showSpan: boolean = false;
   responseError: boolean = false;
-  responseMessageError: string = "";
-  fieldTextType:boolean;
+  responseMessageError: string = '';
+  fieldTextType: boolean;
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
       Email: ['', Validators.required],
-      Senha: ['', Validators.required]
-    })
+      Senha: ['', Validators.required],
+    });
   }
 
-  registerOnClick(){
+  registerOnClick() {
     this.loginComponent.showTab('register');
   }
 
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-  
+
   login() {
     if (this.loginForm.valid) {
-      
       const formData = this.loginForm.value;
       this.showSpan = true;
 
       setTimeout(() => {
-        this.authService.login(formData).pipe(
-          catchError((error: HttpErrorResponse) => {
-            if (error.status === 0) {
-              this.showSpan = false;
-              this.responseError = true;
-              this.responseMessageError = "Erro interno do servidor";
-              setTimeout(() => {
-                this.responseError = false;
-              },2500)
-            } else {
-              this.showSpan = false;
-              this.responseError = true;   
-              this.responseMessageError = error.error; 
-              setTimeout(() => {
-                this.responseError = false;
-              },2000) 
-            }
-            return throwError(() => error);
-          })
-        )
-        .subscribe((token: string) => {
-          this.showSpan = false;
-          this.responseError = false;
-          localStorage.setItem('authToken', token);
-          this.router.navigate(['/usuario']);
-        });
+        this.authService
+          .login(formData)
+          .pipe(
+            catchError((error: HttpErrorResponse) => {
+              if (error.status === 0) {
+                this.showSpan = false;
+                this.responseError = true;
+                this.responseMessageError = 'Erro interno do servidor';
+                setTimeout(() => {
+                  this.responseError = false;
+                }, 2500);
+              } else {
+                this.showSpan = false;
+                this.responseError = true;
+                this.responseMessageError = error.error;
+                setTimeout(() => {
+                  this.responseError = false;
+                }, 2000);
+              }
+              return throwError(() => error);
+            })
+          )
+          .subscribe((token: string) => {
+            this.showSpan = false;
+            this.responseError = false;
+            localStorage.setItem('authToken', token);
+            this.router.navigate(['/usuario']);
+          });
       }, 2000);
     }
   }
-  
 }
-
-

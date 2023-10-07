@@ -41,11 +41,14 @@
           formControlName="Senha" 
           required />
         <div class="input-group-append">
-          <span class="input-group-text"> 
+          <span 
+              class="input-group-text" 
+              style="cursor: pointer;"
+              (click)="toggleFieldTextType()"
+            > 
             <i
             class="fa"
-            [ngClass]="{'fa-eye-slash': !fieldTextType, 'fa-eye': fieldTextType }"
-            (click)="toggleFieldTextType()"
+            [ngClass]="{'fa-eye-slash': !fieldTextType, 'fa-eye': fieldTextType}"
             ></i>
           </span>
         </div>
