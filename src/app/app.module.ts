@@ -15,19 +15,20 @@ import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-
 import { ModalLogoutComponent } from './Components/user-is-logged-in/modal-logout/modal-logout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContasComponent } from './Components/contas/contas.component';
+import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,   
+    HomeComponent, 
     LoginComponent,
     UserIsLoggedInComponent,
     LoginDiretoComponent,
     RegisterComponent,
     UserIsLoggedInComponent,
-    ModalLogoutComponent,
-    ContasComponent
+    ModalLogoutComponent,  
+    ContasComponent, TabelaContasComponent
   ],
   imports: [
     BrowserModule,

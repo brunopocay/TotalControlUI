@@ -5,7 +5,7 @@ import { UserRequest } from 'src/app/Models/UserRequest';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TimeoutError, catchError, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login-direto',

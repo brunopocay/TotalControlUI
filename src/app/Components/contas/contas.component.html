@@ -1,14 +1,19 @@
 <div class="d-flex">
   <section>
     <article class="content row m-2 p-2">
-      <div class="card">
+      <div 
+        type="button" 
+        class="card" 
+        *ngFor="let meses of months"
+        (click)="navigateToTableMonth(meses.mes + meses.ano)"
+      >
         <img
           class="card-img-top"
           src="../../../assets/transferir.png"
           alt="Card image cap"
         />
         <div class="card-body">
-          <p class="card-text">Janeiro</p>
+          <p class="card-text">{{meses.mes}} / {{meses.ano}}</p>
         </div>
       </div>
     </article>
@@ -26,23 +31,25 @@
         </div>
       </div>
       <div class="mt-4 text-center">
-        <select class="form-select">
+        <select class="form-select" [(ngModel)]="selectedMonth">
             <option value="" selected disabled>Escolha o mês</option>
-            <option value="01">Janeiro</option>
-            <option value="02">Fevereiro</option>
-            <option value="03">Março</option>
-            <option value="04">Abril</option>
-            <option value="05">Maio</option>
-            <option value="06">Junho</option>
-            <option value="07">Julho</option>
-            <option value="08">Agosto</option>
-            <option value="09">Setembro</option>
-            <option value="10">Outubro</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
+            <option value="Janeiro">Janeiro</option>
+            <option value="Fevereiro">Fevereiro</option>
+            <option value="Março">Março</option>
+            <option value="Abril">Abril</option>
+            <option value="Maio">Maio</option>
+            <option value="Junho">Junho</option>
+            <option value="Julho">Julho</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Setembro">Setembro</option>
+            <option value="Outubro">Outubro</option>
+            <option value="Novembro">Novembro</option>
+            <option value="Dezembro">Dezembro</option>
         </select>
-        <div class="mt-2">
-          <button class="btn btn-outline-primary">Cadastrar Mês</button>
+        <div class="mt-2 form-group">
+          <label for="ano">Digite o ano</label>
+          <input type="text" class="form-control mb-2" id="ano" placeholder="2023" [(ngModel)]="month.ano">
+          <button type="button" (click)="cadastrarMes()" class="btn btn-outline-primary">Cadastrar Mês</button>
         </div>
       </div>
     </article>
