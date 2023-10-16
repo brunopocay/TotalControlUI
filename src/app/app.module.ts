@@ -16,19 +16,21 @@ import { ModalLogoutComponent } from './Components/user-is-logged-in/modal-logou
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContasComponent } from './Components/contas/contas.component';
 import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.component';
+import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent, 
+    HomeComponent,
     LoginComponent,
     UserIsLoggedInComponent,
     LoginDiretoComponent,
     RegisterComponent,
     UserIsLoggedInComponent,
-    ModalLogoutComponent,  
-    ContasComponent, TabelaContasComponent
+    ModalLogoutComponent,
+    ContasComponent,
+    TabelaContasComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,13 +38,20 @@ import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomErrorHttpInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

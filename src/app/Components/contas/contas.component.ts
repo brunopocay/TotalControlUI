@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
@@ -37,18 +38,43 @@ export class ContasComponent implements OnInit {
     });
   }
 
+  ExcluirMes(mes: MesControle){  
+      Swal.fire({
+        title: 'Atenção <i class="fa-solid fa-triangle-exclamation"></i>',
+        text: 'Tem certeza que deseja deletar o controle do mês de: ' + mes.mes + '/' + mes.ano + ' ?',
+        icon: 'warning',
+        iconColor: 'red',
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+      }).then((result) => {
+        if(result.isConfirmed){          
+          this.service.deleteMonth(mes).subscribe(() => {           
+            const index = this.months.findIndex((item) => item === mes);
+            if (index !== -1) {
+              this.months.splice(index, 1);
+            }
+          });
+        }
+      });   
+  }
+
   cadastrarMes() {
     this.month.mes = this.selectedMonth;
     this.service
       .registerMonth(this.month)
       .pipe(
-        catchError((error) => {
-          Swal.fire({
-            title: 'Erro ao cadastrar mês. Tente Novamente!',
-            icon: 'error',
-            iconColor: 'red',
-            showConfirmButton: true,
-          });
+        catchError((error: HttpErrorResponse) => {
+          if(error.status === 404) {        
+            Swal.fire({
+              title: 'Não foi possivel cadastrar!',
+              text: error.error,
+              icon: 'error',
+              iconColor: 'red',
+              showConfirmButton: true,
+            });
+          }
           return throwError(() => error);
         })
       )

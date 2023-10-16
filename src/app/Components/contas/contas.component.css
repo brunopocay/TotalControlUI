@@ -36,6 +36,10 @@ p {
   text-align: center;
 }
 
+.card-text{
+  cursor: default;
+}
+
 .filter-menu {
   background-color: #f2f2f2;
   padding: 10px;

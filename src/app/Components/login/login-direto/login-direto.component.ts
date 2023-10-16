@@ -59,14 +59,14 @@ export class LoginDiretoComponent implements OnInit {
                 this.responseMessageError = 'Erro interno do servidor';
                 setTimeout(() => {
                   this.responseError = false;
-                }, 2500);
+                }, 1500);
               } else {
                 this.showSpan = false;
                 this.responseError = true;
                 this.responseMessageError = error.error;
                 setTimeout(() => {
                   this.responseError = false;
-                }, 2000);
+                }, 1000);
               }
               return throwError(() => error);
             })
@@ -77,7 +77,7 @@ export class LoginDiretoComponent implements OnInit {
             localStorage.setItem('authToken', token);
             this.router.navigate(['/usuario']);
           });
-      }, 2000);
+      }, 1000);
     }
   }
 }

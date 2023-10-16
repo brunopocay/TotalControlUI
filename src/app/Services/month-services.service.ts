@@ -20,4 +20,8 @@ export class MonthServicesService {
   public registerMonth(mes: MesControle): Observable<MesControle>{
     return this.http.post<MesControle>(`${environment.apiURL}/${this.url}`, mes)
   }
+
+  public deleteMonth(mes: MesControle): Observable<MesControle>{
+    return this.http.put<MesControle>(`${environment.apiURL}/${this.url}`, mes)
+  }
 }

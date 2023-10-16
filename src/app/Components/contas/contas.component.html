@@ -1,11 +1,9 @@
 <div class="d-flex">
   <section>
     <article class="content row m-2 p-2">
-      <div 
-        type="button" 
+      <div   
         class="card" 
-        *ngFor="let meses of months"
-        (click)="navigateToTableMonth(meses.mes + meses.ano)"
+        *ngFor="let meses of months"       
       >
         <img
           class="card-img-top"
@@ -14,6 +12,8 @@
         />
         <div class="card-body">
           <p class="card-text">{{meses.mes}} / {{meses.ano}}</p>
+          <button (click)="navigateToTableMonth(meses.mes + meses.ano)" class="btn btn-info m-2">Entrar</button>
+          <button (click)="ExcluirMes(meses)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
     </article>

@@ -86,11 +86,13 @@
           required
         />
         <div class="div input-group-append">
-          <span class="input-group-text">
+          <span 
+            class="input-group-text"
+            (click)="toggleFieldTextType()"
+          >
             <i
               class="fa"
-              [ngClass]="{'fa-eye-slash' : !fieldTextType, 'fa-eye' : fieldTextType}"
-              (click)="toggleFieldTextType()"
+              [ngClass]="{'fa-eye-slash' : !fieldTextType, 'fa-eye' : fieldTextType}"            
               ></i>     
           </span>
         </div>
@@ -111,11 +113,13 @@
           required
         />
         <div class="div input-group-append">
-          <span class="input-group-text">
+          <span 
+            class="input-group-text"
+            (click)="repeatToggleFieldTextType()"
+          >
             <i
               class="fa"
               [ngClass]="{'fa-eye-slash' : !repeatFieldTextType, 'fa-eye' : repeatFieldTextType}"
-              (click)="repeatToggleFieldTextType()"
               ></i>     
           </span>
         </div>
