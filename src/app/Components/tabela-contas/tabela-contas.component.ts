@@ -17,6 +17,29 @@ export class TabelaContasComponent implements OnInit {
     'RetornoInvestimento',
   ];
 
+  function tiposCategoria(tiposCategoria: TipoCategoria | undefined) {
+    let label = "";
+
+    switch (tiposCategoria) {
+      case TipoCategoria.Despesa:
+        label = "Despesa";
+        break;
+      case TipoCategoria.Renda:
+        label = "Renda";
+        break;
+      case TipoCategoria.RendaExtra:
+        label = "Renda Extra";
+        break;
+      case TipoCategoria.RetornoInvestimento:
+        label = "Retorno Investimento";
+      default:
+        label = "Outro";
+        break;
+    }
+
+    return <span>{label}</span>;
+  }
+
   selectedCategory: string = '';
   categorias: Category[] = [];
 
