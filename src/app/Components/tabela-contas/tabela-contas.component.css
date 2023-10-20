@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.table {
+  margin-left: 16px;
+}
+
+aside {
+  max-width: 15%;
+  border-right: 1px solid #ccc; /* Adiciona uma linha vertical à direita do aside */
+  padding-right: 20px; /* Espaçamento à direita da linha vertical */
+  margin-right: 12px;
+}

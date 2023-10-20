@@ -1,1 +1,88 @@
-<p>teste 2023</p>
+<div class="container mt-4">
+  <aside>
+    <article>
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">
+            Comece agora a controlar suas contas mensais !<br /><br />
+            <strong>Cadastre abaixo a categoria desejada<br /></strong>
+            <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
+          </p>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <div class="mt-2 form-group">
+          <label for="ano">Digite o nome da categoria</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="ano"
+            placeholder="2023"
+          />
+          <button type="button" class="btn btn-outline-primary">
+            Cadastrar Categoria
+          </button>
+        </div>
+      </div>
+    </article>
+  </aside>
+  <div class="separador"></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome da Categoria</th>
+        <th scope="col">Tipo de Conta</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor(R$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">
+          <select class="form-select" [(ngModel)]="selectedCategory">
+            <option value="" selected disabled>Categorias</option>
+            <option *ngFor="let categoria of categorias">
+              {{ categoria.nomeCategoria }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <select class="form-select">
+            <option value="" selected disabled>Tipos</option>
+            <option *ngFor="let tipo of tiposCategoria" [value]="tipo">
+              {{ tipo }}
+            </option>
+          </select>
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="descricao"
+            placeholder="Digite a descrição"
+          />
+        </td>
+        <td>
+          <input
+            type="number"
+            class="form-control mb-2"
+            id="valor"
+            placeholder="R$"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <!-- <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshCountries()">
+    </ngb-pagination> -->
+
+    <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+    </select> -->
+  </div>
+</div>
