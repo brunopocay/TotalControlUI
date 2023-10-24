@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContasComponent } from './Components/contas/contas.component';
 import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.component';
 import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    CurrencyMaskModule,
   ],
   providers: [
     {

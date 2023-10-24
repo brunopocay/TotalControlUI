@@ -1,11 +1,11 @@
 import { Users } from "./Users";
 
 export class Category {
-  id: number ;
-  userId: number ;
-  user: Users | null ;
+  id?: number;
+  userId?: number;
+  user?: Users | null;
   nomeCategoria: string;
-  tipoCategorias: TipoCategoria;
+  tipoCategorias?: TipoCategoria;
 }
 
 export enum TipoCategoria {

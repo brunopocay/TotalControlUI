@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./contas.component.css'],
 })
 export class ContasComponent implements OnInit {
-  selectedMonth: string = '';
 
+  selectedMonth: string = '';
   month: MesControle = {
     mes: '',
     ano: '',

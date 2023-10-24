@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Category, TipoCategoria } from 'src/app/Models/Category';
+import { Category } from 'src/app/Models/Category';
 import { CategoriasService } from 'src/app/Services/categorias.service';
 
 @Component({
@@ -9,38 +9,18 @@ import { CategoriasService } from 'src/app/Services/categorias.service';
   styleUrls: ['./tabela-contas.component.css'],
 })
 export class TabelaContasComponent implements OnInit {
-
   tiposCategoria: string[] = [
     'Despesa',
     'Renda',
-    'RendaExtra',
-    'RetornoInvestimento',
+    'Renda Extra',
+    'Retorno Investimento',
   ];
 
-  function tiposCategoria(tiposCategoria: TipoCategoria | undefined) {
-    let label = "";
+  selectedCategoria: string = '';
+  categoria: Category = {
+    nomeCategoria: '',
+  };
 
-    switch (tiposCategoria) {
-      case TipoCategoria.Despesa:
-        label = "Despesa";
-        break;
-      case TipoCategoria.Renda:
-        label = "Renda";
-        break;
-      case TipoCategoria.RendaExtra:
-        label = "Renda Extra";
-        break;
-      case TipoCategoria.RetornoInvestimento:
-        label = "Retorno Investimento";
-      default:
-        label = "Outro";
-        break;
-    }
-
-    return <span>{label}</span>;
-  }
-
-  selectedCategory: string = '';
   categorias: Category[] = [];
 
   constructor(
@@ -52,11 +32,27 @@ export class TabelaContasComponent implements OnInit {
     this.GetCategoria();
   }
 
+  getSelectedTipoCategoria() {
+    const categoriaSelecionada = this.categorias.find(
+      (categoria) => categoria.nomeCategoria === this.selectedCategoria
+    );
+
+    if (categoriaSelecionada) {
+      return categoriaSelecionada.tipoCategorias;
+    } else {
+      return '';
+    }
+  }
+
   GetCategoria() {
     this.service.GetCategory().subscribe((result) => {
       this.categorias = [];
       this.categorias = result;
-      console.log(this.categorias);
     });
+  }
+
+  CadastrarCategoria() {
+    this.categoria.nomeCategoria = this.selectedCategoria;
+    this.service.NewCategory(this.categoria);
   }
 }
