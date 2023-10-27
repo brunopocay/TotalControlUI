@@ -13,20 +13,14 @@
       <div class="mt-4 text-center">
         <div class="mt-2 form-group">
           <label for="ano">Digite o nome da categoria</label>
-          <input           
-            type="text"
-            class="form-control mb-2"
-            id="name"          
-          />
-          <select
-            class="form-select"                      
-          >
+          <input [(ngModel)]="categoria.nomeCategoria" type="text" class="form-control mb-2" id="name"/>
+          <select [(ngModel)]="selectedCategoria" class="form-select" >
             <option value="" selected disabled>Tipo da categoria</option>
-            <option *ngFor="let tipo of tiposCategoria" [value]="tipo">
-              {{ tipo }}
+            <option *ngFor="let tipo of tipoCategoriaArray" [value]="tipo.value" >
+              {{ tipo.key }}
             </option>
           </select>
-          <button type="button" class="btn btn-outline-primary mt-2">
+          <button type="button" (click)="CadastrarCategoria()" class="btn btn-outline-primary mt-2">
             Cadastrar Categoria
           </button>
         </div>
@@ -46,16 +40,23 @@
       </thead>
       <tbody>
         <tr>
-         <td scope="row">
+          <td scope="row">
             <select class="form-select" [(ngModel)]="selectedCategoria">
               <option value="" selected disabled>Categorias</option>
-              <option *ngFor="let categoria of categorias" [value]="categoria.nomeCategoria">
+              <option
+                *ngFor="let categoria of categorias"
+                [value]="categoria.nomeCategoria"
+              >
                 {{ categoria.nomeCategoria }}
               </option>
             </select>
           </td>
-          <td>          
-             <input class="form-control" [value]="getSelectedTipoCategoria()" [disabled]="true">              
+          <td>
+            <input
+              class="form-control"
+              [value]="getSelectedTipoCategoria()"
+              [disabled]="true"
+            />
           </td>
           <td>
             <input
@@ -66,7 +67,7 @@
             />
           </td>
           <td>
-            <input                         
+            <input
               class="form-control mb-2"
               id="valor"
               placeholder="R$"
