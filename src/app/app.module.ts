@@ -18,6 +18,7 @@ import { ContasComponent } from './Components/contas/contas.component';
 import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.component';
 import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ListContasComponent } from './Components/tabela-contas/list-contas/list-contas.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     ModalLogoutComponent,
     ContasComponent,
     TabelaContasComponent,
+    ListContasComponent,
   ],
   imports: [
     BrowserModule,

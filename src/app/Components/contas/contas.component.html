@@ -3,17 +3,17 @@
     <article class="content row m-2 p-2">
       <div   
         class="card" 
-        *ngFor="let meses of months"       
+        *ngFor="let mes of months"               
       >
         <img
           class="card-img-top"
           src="../../../assets/transferir.png"
           alt="Card image cap"
         />
-        <div class="card-body">
-          <p class="card-text">{{meses.mes}} / {{meses.ano}}</p>
-          <button (click)="navigateToTableMonth(meses.mes + meses.ano)" class="btn btn-info m-2">Entrar</button>
-          <button (click)="ExcluirMes(meses)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+        <div class="card-body" >
+          <p class="card-text">{{mes.mes}} / {{mes.ano}}</p>
+          <button (click)="NavigateToTableMonth(mes, mes.mes + mes.ano)" class="btn btn-info m-2">Entrar</button>
+          <button (click)="ExcluirMes(mes)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
     </article>

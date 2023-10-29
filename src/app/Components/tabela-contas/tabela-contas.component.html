@@ -1,97 +1,41 @@
 <div class="container mt-4">
   <aside>
     <article>
-      <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">
-            Comece agora a controlar suas contas mensais !<br /><br />
-            <strong>Cadastre abaixo a categoria desejada<br /></strong>
-            <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
-          </p>
-        </div>
-      </div>
-      <div class="mt-4 text-center">
-        <div class="mt-2 form-group">
-          <label for="ano">Digite o nome da categoria</label>
-          <input [(ngModel)]="categoria.nomeCategoria" type="text" class="form-control mb-2" id="name"/>
-          <select [(ngModel)]="selectedCategoria" class="form-select" >
-            <option value="" selected disabled>Tipo da categoria</option>
-            <option *ngFor="let tipo of tipoCategoriaArray" [value]="tipo.value" >
-              {{ tipo.key }}
-            </option>
-          </select>
-          <button type="button" (click)="CadastrarCategoria()" class="btn btn-outline-primary mt-2">
-            Cadastrar Categoria
-          </button>
-        </div>
-      </div>
+      <form [formGroup]="registrationFormCat" (ngSubmit)="RegisterCategory()">
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="card-text">
+                Comece agora a controlar suas contas mensais !<br /><br />
+                <strong>Cadastre abaixo a categoria desejada<br /></strong>
+                <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 text-center">
+            <div class="mt-2 form-group">
+              <label for="ano">Digite o nome da categoria</label>
+              <input type="text" class="form-control mb-2" formControlName="nomeCategoria" required/>
+              <div *ngIf="(registrationFormCat.get('nomeCategoria')?.invalid && registrationFormCat.get('nomeCategoria')?.touched) || registrationFormCat.get('nomeCategoria')?.dirty">
+                <div *ngIf="registrationFormCat.get('nomeCategoria')?.errors?.['required']" class="alert alert-danger">
+                  Nome obrigatório
+                </div>
+              </div>
+              
+              <select class="form-select" formControlName="tipoCategorias" required>
+                <option value="" selected disabled>Tipo da conta</option>
+                <option *ngFor="let tipo of tipoCategoriaArray" [value]="tipo.value" >
+                  {{ tipo.key }}
+                </option>
+              </select>
+             
+              <button type="submit" [disabled]="registrationFormCat.invalid" class="btn btn-outline-primary mt-2">
+                Cadastrar Categoria
+              </button>
+            </div>
+          </div>
+      </form>
     </article>
   </aside>
   <div class="separador"></div>
-  <div class="content">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nome da Categoria</th>
-          <th scope="col">Tipo de Conta</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Valor(R$)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td scope="row">
-            <select class="form-select" [(ngModel)]="selectedCategoria">
-              <option value="" selected disabled>Categorias</option>
-              <option
-                *ngFor="let categoria of categorias"
-                [value]="categoria.nomeCategoria"
-              >
-                {{ categoria.nomeCategoria }}
-              </option>
-            </select>
-          </td>
-          <td>
-            <input
-              class="form-control"
-              [value]="getSelectedTipoCategoria()"
-              [disabled]="true"
-            />
-          </td>
-          <td>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="descricao"
-              placeholder="Digite a descrição"
-            />
-          </td>
-          <td>
-            <input
-              class="form-control mb-2"
-              id="valor"
-              placeholder="R$"
-              currencyMask
-              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="novaConta">
-      <button class="btn btn-outline-success">Cadastrar</button>
-    </div>
-  </div>
-
-  <!-- <div class="d-flex justify-content-between p-2">
-  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-    (pageChange)="refreshCountries()">
-    </ngb-pagination>
-
-    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-        <option [ngValue]="2">2 items per page</option>
-        <option [ngValue]="4">4 items per page</option>
-        <option [ngValue]="6">6 items per page</option>
-    </select>
-  </div> -->
+  <app-list-contas [categorias]="categorias"></app-list-contas>
 </div>

@@ -1,0 +1,8 @@
+.novaConta{
+  display: flex;
+  float: right;
+}
+
+#tipoConta{
+  cursor: not-allowed;
+}

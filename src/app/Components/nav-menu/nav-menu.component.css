@@ -14,7 +14,7 @@ html {
 }
 
 nav{
-  background-color: rgba(0, 4, 255, 0.396);
+  background-color: #0d6efd;
 }
 
 a{
@@ -35,6 +35,6 @@ uL>li>a:hover{
 .underline {
   width: 100%;
   height: 2.5px; /* Altura da linha */
-  background-color: blue; /* Cor da linha (azul neste caso) */
+  background-color: black; /* Cor da linha (azul neste caso) */
   margin-top: 1px;
 }

@@ -13,15 +13,15 @@ export class MonthServicesService {
 
   constructor(private http: HttpClient) { }
 
-  public getMonth(): Observable<MesControle[]>{
+  public GetMonth(){
     return this.http.get<MesControle[]>(`${environment.apiURL}/${this.url}`)
   }
 
-  public registerMonth(mes: MesControle): Observable<MesControle>{
+  public registerMonth(mes: MesControle){
     return this.http.post<MesControle>(`${environment.apiURL}/${this.url}`, mes)
   }
 
-  public deleteMonth(mes: MesControle): Observable<MesControle>{
+  public deleteMonth(mes: MesControle){
     return this.http.put<MesControle>(`${environment.apiURL}/${this.url}`, mes)
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormValidators } from '../../../Helpers/form_validators/form-validators';
+import { FormValidators } from '../../../Helpers/form-validators';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/Models/Users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       setTimeout(() => {
         this.service.register(formData).pipe(
           catchError((error: HttpErrorResponse) => {
-            if (error.status === 0) {
+            if (error.status) {
               this.showError = true;
               this.responseMessageError = "Erro interno de servidor";
               setTimeout(() => {

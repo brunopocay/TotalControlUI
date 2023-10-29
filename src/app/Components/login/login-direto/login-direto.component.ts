@@ -53,7 +53,7 @@ export class LoginDiretoComponent implements OnInit {
           .login(formData)
           .pipe(
             catchError((error: HttpErrorResponse) => {
-              if (error.status === 0) {
+              if (error.status) {
                 this.showSpan = false;
                 this.responseError = true;
                 this.responseMessageError = 'Erro interno do servidor';

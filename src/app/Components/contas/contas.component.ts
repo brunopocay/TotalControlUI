@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { MesControle } from 'src/app/Models/Month';
 import { MonthServicesService } from 'src/app/Services/month-services.service';
+import { DataMonthService } from 'src/app/Shared/data-month.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,52 +13,62 @@ import Swal from 'sweetalert2';
   styleUrls: ['./contas.component.css'],
 })
 export class ContasComponent implements OnInit {
-
   selectedMonth: string = '';
   month: MesControle = {
     mes: '',
     ano: '',
   };
-
   months: MesControle[] = [];
 
-  constructor(private service: MonthServicesService, private router: Router) {}
+  constructor(
+    private service: MonthServicesService,
+    private router: Router,
+    private monthServiceData: DataMonthService
+  ) {}
 
-  ngOnInit(): void {
-    this.getMonth();
+  async ngOnInit() {
+    this.GetMonths();
+    localStorage.removeItem('monthsData');
   }
 
-  navigateToTableMonth(mes: string) {
-    this.router.navigate(['/contas/tabelacontas', mes]);
+  NavigateToTableMonth(mes: MesControle, url: string) {
+    const monthData = mes;
+    this.monthServiceData.SetMonthData(monthData);
+    this.router.navigate([`/contas/tabelacontas/` + `${url}`]);
   }
 
-  getMonth() {
-    this.service.getMonth().subscribe((result: MesControle[]) => {
+  async GetMonths() {
+    this.service.GetMonth().subscribe((result: MesControle[]) => {
       this.months = [];
       this.months = result;
     });
   }
 
-  ExcluirMes(mes: MesControle){  
-      Swal.fire({
-        title: 'Atenção <i class="fa-solid fa-triangle-exclamation"></i>',
-        text: 'Tem certeza que deseja deletar o controle do mês de: ' + mes.mes + '/' + mes.ano + ' ?',
-        icon: 'warning',
-        iconColor: 'red',
-        showConfirmButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Não'
-      }).then((result) => {
-        if(result.isConfirmed){          
-          this.service.deleteMonth(mes).subscribe(() => {           
-            const index = this.months.findIndex((item) => item === mes);
-            if (index !== -1) {
-              this.months.splice(index, 1);
-            }
-          });
-        }
-      });   
+  ExcluirMes(mes: MesControle) {
+    Swal.fire({
+      title: 'Atenção <i class="fa-solid fa-triangle-exclamation"></i>',
+      text:
+        'Tem certeza que deseja deletar o controle do mês de: ' +
+        mes.mes +
+        '/' +
+        mes.ano +
+        ' ?',
+      icon: 'warning',
+      iconColor: 'red',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.deleteMonth(mes).subscribe(() => {
+          const index = this.months.findIndex((item) => item === mes);
+          if (index !== -1) {
+            this.months.splice(index, 1);
+          }
+        });
+      }
+    });
   }
 
   cadastrarMes() {
@@ -66,7 +77,7 @@ export class ContasComponent implements OnInit {
       .registerMonth(this.month)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.status === 404) {        
+          if (error.status) {
             Swal.fire({
               title: 'Não foi possivel cadastrar!',
               text: error.error,

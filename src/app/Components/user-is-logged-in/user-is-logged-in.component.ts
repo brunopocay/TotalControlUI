@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/Models/Users';
 import { AuthService } from 'src/app/Services/auth.service';
-import { DialogComponentService } from 'src/app/Services/dialog-component.service';
+import { DialogComponentService } from 'src/app/Shared/dialog-component.service';
 
 
 @Component({
