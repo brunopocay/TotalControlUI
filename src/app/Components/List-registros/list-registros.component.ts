@@ -10,11 +10,11 @@ import { DataMonthService } from 'src/app/Shared/data-month.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-list-contas',
-  templateUrl: './list-contas.component.html',
-  styleUrls: ['./list-contas.component.css'],
+  selector: 'app-list-registros',
+  templateUrl: './list-registros.component.html',
+  styleUrls: ['./list-registros.component.css'],
 })
-export class ListContasComponent implements OnInit {
+export class ListRegistrosComponent implements OnInit {
   @Input() categorias: Category[];
   registrationFormContas: FormGroup;
   formData: any = {};

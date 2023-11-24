@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Components/home/home.component';
-import { LoginComponent } from './Components/login/login.component';
+import { HomeComponent } from './Views/Home/home.component';
+import { LoginComponent } from './Views/Login/login.component';
 import { authGuard } from './Guards/auth.guard';
 import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-logged-in.component';
 import { ContasComponent } from './Components/contas/contas.component';
-import { TabelaContasComponent } from './Components/tabela-contas/tabela-contas.component';
+import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'usuario', component: UserIsLoggedInComponent, canActivate: [authGuard]},
   { path: 'contas', component: ContasComponent, canActivate: [authGuard]},
-  { path: 'contas/tabelacontas/:mes', component: TabelaContasComponent, canActivate: [authGuard]},
+  { path: 'contas/tabelacontas/:mes', component: RegistroMensaisComponent, canActivate: [authGuard]},
   { path: '**', redirectTo: '/login' }
 ];
 

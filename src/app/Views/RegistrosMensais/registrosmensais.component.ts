@@ -1,20 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { Category, TipoCategoria } from 'src/app/Models/Category';
-import { MesControle } from 'src/app/Models/Month';
 import { CategoriasService } from 'src/app/Services/categorias.service';
 import { DataMonthService } from 'src/app/Shared/data-month.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-tabela-contas',
-  templateUrl: './tabela-contas.component.html',
-  styleUrls: ['./tabela-contas.component.css'],
+  selector: 'app-tabela-registros',
+  templateUrl: './registrosmensais.component.html',
+  styleUrls: ['./registrosmensais.component.css'],
 })
-export class TabelaContasComponent implements OnInit {
+export class RegistroMensaisComponent implements OnInit {
   tipoCategoriaEnum: { [value: string]: TipoCategoria } = {
     'Despesa': TipoCategoria.Despesa,
     'Renda': TipoCategoria.Renda,
