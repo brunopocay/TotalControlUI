@@ -34,25 +34,23 @@ export class ListRegistrosComponent implements OnInit {
       descricao: ['', Validators.required],
       valorDaConta: ['', Validators.required],
     });
-    
   }
 
-  GetDataMonth(){
+  GetDataMonth() {
     const monthData = this.monthDataService.GetMonthData();
     this.mes = monthData;
   }
 
   GetSelectedCategoryType() {
-    const idCategoriaSelecionado = +this.registrationFormContas.get('categoriaId')!.value;  
+    const idCategoriaSelecionado =
+      this.registrationFormContas.get('categoriaId')!.value;
     const categoriaSelecionada = this.categorias.find(
-      (categoria) => categoria.id === idCategoriaSelecionado
+      (cat) => cat.categoriaId == idCategoriaSelecionado
     );
-    
+
     if (categoriaSelecionada) {
-      this.registrationFormContas
-        .get('tipoConta')!
-        .setValue(categoriaSelecionada.tipoCategorias); 
-    } 
+      this.registrationFormContas.get('tipoConta')!.setValue(categoriaSelecionada.tipoCategorias);
+    }
   }
 
   RegisterBill() {
@@ -61,7 +59,7 @@ export class ListRegistrosComponent implements OnInit {
         ...this.formData,
         ...this.registrationFormContas.value,
         diaInclusao: TimeToBrazil(Date.now()),
-        mesId: this.mes.id
+        mesId: this.mes.id,
       };
       this.service
         .RegisterBills(this.formData)
@@ -76,6 +74,7 @@ export class ListRegistrosComponent implements OnInit {
                 showConfirmButton: true,
               });
             }
+            console.log(this.formData);
             return throwError(() => error);
           })
         )

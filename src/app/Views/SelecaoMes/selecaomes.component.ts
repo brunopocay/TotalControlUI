@@ -8,14 +8,14 @@ import { DataMonthService } from 'src/app/Shared/data-month.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-contas',
-  templateUrl: './contas.component.html',
-  styleUrls: ['./contas.component.css'],
+  selector: 'app-selecao-mes',
+  templateUrl: './selecaomes.component.html',
+  styleUrls: ['./selecaomes.component.css'],
 })
-export class ContasComponent implements OnInit {
+export class SelecaoMesComponent implements OnInit {
   selectedMonth: string = '';
   month: MesControle = {
-    mes: '',
+    nomeMes: '',
     ano: '',
   };
   months: MesControle[] = [];
@@ -41,6 +41,7 @@ export class ContasComponent implements OnInit {
     this.service.GetMonth().subscribe((result: MesControle[]) => {
       this.months = [];
       this.months = result;
+      console.log(this.months);
     });
   }
 
@@ -49,7 +50,7 @@ export class ContasComponent implements OnInit {
       title: 'Atenção <i class="fa-solid fa-triangle-exclamation"></i>',
       text:
         'Tem certeza que deseja deletar o controle do mês de: ' +
-        mes.mes +
+        mes.nomeMes +
         '/' +
         mes.ano +
         ' ?',
@@ -62,17 +63,23 @@ export class ContasComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.deleteMonth(mes).subscribe(() => {
-          const index = this.months.findIndex((item) => item === mes);
+          const index = this.months.findIndex((item) => item.id === mes.id);
           if (index !== -1) {
             this.months.splice(index, 1);
           }
+          Swal.fire({
+            title: 'Mês excluido com sucesso',
+            icon: 'success',
+            iconColor: 'green',
+            showConfirmButton: true,
+          });
         });
       }
     });
   }
 
   cadastrarMes() {
-    this.month.mes = this.selectedMonth;
+    this.month.nomeMes = this.selectedMonth;
     this.service
       .registerMonth(this.month)
       .pipe(

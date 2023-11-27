@@ -11,7 +11,7 @@ export class CategoriasService {
 
   constructor(private http: HttpClient) { }
 
-  private url = 'Category'
+  private url = 'Categoria'
 
   public GetCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(`${environment.apiURL}/${this.url}`)

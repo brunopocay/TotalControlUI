@@ -13,13 +13,19 @@ import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
 import { NavMenuComponent } from './Components/NavMenu/nav-menu.component';
 import { HomeComponent } from './Views/Home/home.component';
 import { LoginComponent } from './Views/Login/login.component';
-import { LoginDiretoComponent } from '../app/Components/Login/login-direto/login-direto.component';
-import { RegisterComponent } from '../app/Components/Login/register/register.component';
-import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-logged-in.component';
-import { ModalLogoutComponent } from './Components/user-is-logged-in/modal-logout/modal-logout.component';
-import { ContasComponent } from './Components/contas/contas.component';
+import { LoginDiretoComponent } from '../app/Components/login/login-direto/login-direto.component';
+import { RegisterComponent } from '../app/Components/login/register/register.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor } from './Services/auth.interceptor';
+import { InfoUsuarioComponent } from './Views/InfoUsuarios/infousuario.component';
+import { PopUpLogoutComponent } from './Components/PopUpLogout/popuplogout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SelecaoMesComponent } from './Views/SelecaoMes/selecaomes.component';
 import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
 import { ListRegistrosComponent } from './Components/List-registros/list-registros.component';
+import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-contas.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +33,14 @@ import { ListRegistrosComponent } from './Components/List-registros/list-registr
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
+    InfoUsuarioComponent,
     LoginDiretoComponent,
     RegisterComponent,
-    UserIsLoggedInComponent,
-    ModalLogoutComponent,
-    ContasComponent,
+    PopUpLogoutComponent,
+    SelecaoMesComponent,
     RegistroMensaisComponent,
     ListRegistrosComponent,
+    ListaDeContasComponent,
   ],
   imports: [
     BrowserModule,

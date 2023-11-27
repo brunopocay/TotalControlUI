@@ -37,5 +37,10 @@
     </article>
   </aside>
   <div class="separador"></div>
-  <app-list-registros [categorias]="categorias"></app-list-registros>
+  <ng-container *ngIf="categorias && categorias.length > 0">
+    <div class="d-flex flex-column">
+      <app-list-registros [categorias]="categorias"></app-list-registros>
+      <app-lista-de-contas></app-lista-de-contas>
+    </div>
+  </ng-container>
 </div>

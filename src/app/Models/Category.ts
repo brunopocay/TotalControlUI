@@ -1,7 +1,7 @@
 import { Users } from "./Users";
 
 export class Category {
-  id?: number;
+  categoriaId?: number;
   userId?: number;
   user?: Users | null;
   nomeCategoria: string;
