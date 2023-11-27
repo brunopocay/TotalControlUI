@@ -11,14 +11,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './Services/auth.interceptor';
-import { UserIsLoggedInComponent } from './Components/user-is-logged-in/user-is-logged-in.component';
-import { ModalLogoutComponent } from './Components/user-is-logged-in/modal-logout/modal-logout.component';
+import { InfoUsuarioComponent } from './Views/InfoUsuarios/infousuario.component';
+import { PopUpLogoutComponent } from './Components/PopUpLogout/popuplogout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ContasComponent } from './Components/contas/contas.component';
+import { SelecaoMesComponent } from './Views/SelecaoMes/selecaomes.component';
 import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
 import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ListRegistrosComponent } from './Components/List-registros/list-registros.component';
+import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-contas.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,14 @@ import { ListRegistrosComponent } from './Components/List-registros/list-registr
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
-    UserIsLoggedInComponent,
+    InfoUsuarioComponent,
     LoginDiretoComponent,
     RegisterComponent,
-    UserIsLoggedInComponent,
-    ModalLogoutComponent,
-    ContasComponent,
+    PopUpLogoutComponent,
+    SelecaoMesComponent,
     RegistroMensaisComponent,
     ListRegistrosComponent,
+    ListaDeContasComponent,
   ],
   imports: [
     BrowserModule,

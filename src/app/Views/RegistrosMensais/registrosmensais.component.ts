@@ -23,6 +23,7 @@ export class RegistroMensaisComponent implements OnInit {
   tipoCategoriaArray = Object.entries(this.tipoCategoriaEnum).map(
     ([key, value]) => ({ key, value })
   );
+
   registrationFormCat: FormGroup;
   categorias: Category[] = [];
 
@@ -33,17 +34,17 @@ export class RegistroMensaisComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.GetCategory();
     this.registrationFormCat = this.formBuilder.group({
       nomeCategoria: ['', Validators.required],
       tipoCategorias: ['', Validators.required],
-    });
+    });  
+    this.GetCategory()
   }
 
   GetCategory() {
-    this.service.GetCategory().subscribe((result) => {
+   this.service.GetCategory().subscribe((result) => {
       this.categorias = [];
-      this.categorias = result;
+      this.categorias = result; 
     });
   }
 
@@ -79,4 +80,5 @@ export class RegistroMensaisComponent implements OnInit {
       }
   }
 }
+
 

@@ -11,8 +11,8 @@
           alt="Card image cap"
         />
         <div class="card-body" >
-          <p class="card-text">{{mes.mes}} / {{mes.ano}}</p>
-          <button (click)="NavigateToTableMonth(mes, mes.mes + mes.ano)" class="btn btn-info m-2">Entrar</button>
+          <p class="card-text">{{mes.nomeMes}} / {{mes.ano}}</p>
+          <button (click)="NavigateToTableMonth(mes, mes.nomeMes + mes.ano)" class="btn btn-info m-2">Entrar</button>
           <button (click)="ExcluirMes(mes)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>

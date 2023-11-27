@@ -8,7 +8,7 @@ import { Bills } from '../Models/Bills';
 })
 export class ControleMensalService {
 
-  private url = 'controlemensal'
+  private url = 'registrofinanceiromensal'
 
   constructor(private http: HttpClient) { }
 

@@ -1,10 +1,10 @@
 <div class="content">
-  <form [formGroup]="registrationFormContas" (ngSubmit)="RegisterBill()">
     <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Nome da Categoria</th>
           <th scope="col">Tipo de Conta</th>
+          <th scope="col">Data Inclusão</th>
           <th scope="col">Descrição</th>
           <th scope="col">Valor(R$)</th>
         </tr>
@@ -12,40 +12,35 @@
       <tbody>
         <tr>
           <td scope="row">
-            <select class="form-select" formControlName="categoriaId" (change)="GetSelectedCategoryType()">
+            <select class="form-select">
               <option value="" selected disabled>Categorias</option>
-              <option
-                *ngFor="let categoria of categorias"
-                [value]="categoria.categoriaId"
-              >
-                {{ categoria.nomeCategoria }}
-              </option>
+              <option>teste</option>
             </select>
           </td>
           <td>
             <input
               id="tipoConta"
-              class="form-control"
-              formControlName="tipoConta" 
-              [value]="registrationFormContas.get('tipoConta')!.value"                    
+              class="form-control"                
               readonly          
+            />
+          </td>
+          <td>
+            <input             
+              class="form-control"
+              readonly
             />
           </td>
           <td>
             <input
               type="text"
               class="form-control mb-2"            
-              placeholder="Digite a descrição"
-              formControlName="descricao"
-              required
+              placeholder="Digite a descrição"                      
             />
           </td>
           <td>
             <input
               class="form-control mb-2"         
-              placeholder="R$"
-              formControlName="valorDaConta"
-              required
+              placeholder="R$"                    
               currencyMask
               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
             />
@@ -53,8 +48,4 @@
         </tr>
       </tbody>
     </table>
-    <div class="novaConta">
-      <button type="submit" [disabled]="registrationFormContas.invalid" class="btn btn-primary">Cadastrar</button>
-    </div>
-  </form>
 </div>
