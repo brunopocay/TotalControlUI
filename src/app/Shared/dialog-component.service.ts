@@ -11,8 +11,8 @@ export class DialogComponentService {
   public confirm(
     title: string,
     message: string,
-    btnOkText: string = 'Sim',
-    btnCancelText: string = 'Não',
+    btnOkText = 'Sim',
+    btnCancelText = 'Não',
     dialogSize: 'sm' | 'lg' = 'sm'
   ): Promise<boolean> {
     const modalRef = this.modalService.open(PopUpLogoutComponent, {

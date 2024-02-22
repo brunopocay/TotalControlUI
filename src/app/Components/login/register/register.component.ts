@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormValidators } from '../../../Helpers/form-validators';
 import { Router } from '@angular/router';
-import { Users } from 'src/app/Models/Users';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -15,9 +14,9 @@ import { catchError, throwError } from 'rxjs';
 export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup ;
-  showErrorEmail: boolean = false;
-  showError:boolean = false;
-  responseMessageError: string = "";
+  showErrorEmail = false;
+  showError = false;
+  responseMessageError = "";
   fieldTextType:boolean;
   repeatFieldTextType:boolean;
 

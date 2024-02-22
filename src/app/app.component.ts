@@ -8,7 +8,7 @@ import { AuthService } from './Services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'TotalControlUI';
-  bodyStyleClass: string = '';
+  bodyStyleClass = '';
 
   constructor(private authService: AuthService) {}
 

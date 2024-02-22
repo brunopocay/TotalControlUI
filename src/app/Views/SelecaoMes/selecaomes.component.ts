@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./selecaomes.component.css'],
 })
 export class SelecaoMesComponent implements OnInit {
-  selectedMonth: string = '';
+  selectedMonth = '';
   month: MesControle = {
     nomeMes: '',
     ano: '',
@@ -96,7 +96,7 @@ export class SelecaoMesComponent implements OnInit {
           return throwError(() => error);
         })
       )
-      .subscribe((response) => {
+      .subscribe(() => {
         Swal.fire({
           title: 'Mês cadastrado com sucesso',
           icon: 'success',

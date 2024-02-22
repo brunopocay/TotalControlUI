@@ -23,9 +23,9 @@ export class LoginDiretoComponent implements OnInit {
     private formbuilder: FormBuilder
   ) {}
 
-  showSpan: boolean = false;
-  responseError: boolean = false;
-  responseMessageError: string = '';
+  showSpan = false;
+  responseError = false;
+  responseMessageError = '';
   fieldTextType: boolean;
 
   ngOnInit(): void {
@@ -56,10 +56,10 @@ export class LoginDiretoComponent implements OnInit {
               if (error.status) {
                 this.showSpan = false;
                 this.responseError = true;
-                this.responseMessageError = 'Erro interno do servidor';
+                this.responseMessageError = error.error;
                 setTimeout(() => {
                   this.responseError = false;
-                }, 1500);
+                }, 3000);
               } else {
                 this.showSpan = false;
                 this.responseError = true;

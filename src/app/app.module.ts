@@ -13,14 +13,15 @@ import { CustomErrorHttpInterceptor } from './Services/StatusTextInterceptor';
 import { NavMenuComponent } from './Components/NavMenu/nav-menu.component';
 import { HomeComponent } from './Views/Home/home.component';
 import { LoginComponent } from './Views/Login/login.component';
-import { LoginDiretoComponent } from './Components/Login/login-direto/login-direto.component';
-import { RegisterComponent } from '../app/Components/Login/register/register.component';
 import { InfoUsuarioComponent } from './Views/InfoUsuarios/infousuario.component';
 import { PopUpLogoutComponent } from './Components/PopUpLogout/popuplogout.component';
 import { SelecaoMesComponent } from './Views/SelecaoMes/selecaomes.component';
 import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
-import { ListRegistrosComponent } from './Components/List-registros/list-registros.component';
-import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-contas.component';
+import { ListRegistrosComponent } from './Components/RegistrosMensais/List-registros/list-registros.component';
+import { ListaDeContasComponent } from './Components/RegistrosMensais/lista-de-contas/lista-de-contas.component';
+import { LoginDiretoComponent } from './Components/login/login-direto/login-direto.component';
+import { RegisterComponent } from './Components/login/register/register.component';
+import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-contas/modal-cadastro-de-contas.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,15 @@ import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-co
     NavMenuComponent,
     HomeComponent,
     LoginComponent,
-    LoginDiretoComponent,
     InfoUsuarioComponent,
+    LoginDiretoComponent,
     RegisterComponent,
     PopUpLogoutComponent,
     SelecaoMesComponent,
     RegistroMensaisComponent,
     ListRegistrosComponent,
     ListaDeContasComponent,
+    ModalCadastroDeContasComponent,
   ],
   imports: [
     BrowserModule,

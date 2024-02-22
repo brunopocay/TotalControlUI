@@ -1,8 +1,7 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Observable, catchError, throwError } from "rxjs";
 
 export class CustomErrorHttpInterceptor implements HttpInterceptor {
-  constructor() {}
 
   intercept(
     request: HttpRequest<any>,

@@ -36,9 +36,10 @@
       </form>
     </article>
   </aside>
-  <div class="separador"></div>
+
   <ng-container *ngIf="categorias && categorias.length > 0">
-    <div class="d-flex flex-column">
+    <div class="">
+      <button type="button" class="btn btn-info p-3" (click)="openModalCadastroDeContas()">Cadastrar Contas</button>
       <app-list-registros [categorias]="categorias"></app-list-registros>
       <app-lista-de-contas></app-lista-de-contas>
     </div>

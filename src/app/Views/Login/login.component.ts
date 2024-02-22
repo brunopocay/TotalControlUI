@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  activeTab: string = 'login';
+  activeTab = 'login';
 
   constructor(private authService: AuthService, private router: Router){}
 
