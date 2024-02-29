@@ -17,8 +17,8 @@ import { InfoUsuarioComponent } from './Views/InfoUsuarios/infousuario.component
 import { PopUpLogoutComponent } from './Components/PopUpLogout/popuplogout.component';
 import { SelecaoMesComponent } from './Views/SelecaoMes/selecaomes.component';
 import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
-import { ListRegistrosComponent } from './Components/RegistrosMensais/List-registros/list-registros.component';
-import { ListaDeContasComponent } from './Components/RegistrosMensais/lista-de-contas/lista-de-contas.component';
+import { ListRegistrosComponent } from './Components/List-registros/list-registros.component';
+import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-contas.component';
 import { LoginDiretoComponent } from './Components/login/login-direto/login-direto.component';
 import { RegisterComponent } from './Components/login/register/register.component';
 import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-contas/modal-cadastro-de-contas.component';

@@ -1,46 +1,7 @@
 <div class="container mt-4">
-  <aside>
-    <article>
-      <form [formGroup]="registrationFormCat" (ngSubmit)="RegisterCategory()">
-          <div class="card">
-            <div class="card-body text-center">
-              <p class="card-text">
-                Comece agora a controlar suas contas mensais !<br /><br />
-                <strong>Cadastre abaixo a categoria desejada<br /></strong>
-                <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
-              </p>
-            </div>
-          </div>
-          <div class="mt-4 text-center">
-            <div class="mt-2 form-group">
-              <label for="ano">Digite o nome da categoria</label>
-              <input type="text" class="form-control mb-2" formControlName="nomeCategoria" required/>
-              <div *ngIf="(registrationFormCat.get('nomeCategoria')?.invalid && registrationFormCat.get('nomeCategoria')?.touched) || registrationFormCat.get('nomeCategoria')?.dirty">
-                <div *ngIf="registrationFormCat.get('nomeCategoria')?.errors?.['required']" class="alert alert-danger">
-                  Nome obrigatório
-                </div>
-              </div>
-              
-              <select class="form-select" formControlName="tipoCategorias" required>
-                <option value="" selected disabled>Tipo da conta</option>
-                <option *ngFor="let tipo of tipoCategoriaArray" [value]="tipo.value" >
-                  {{ tipo.key }}
-                </option>
-              </select>
-             
-              <button type="submit" [disabled]="registrationFormCat.invalid" class="btn btn-outline-primary mt-2">
-                Cadastrar Categoria
-              </button>
-            </div>
-          </div>
-      </form>
-    </article>
-  </aside>
-
-  <ng-container *ngIf="categorias && categorias.length > 0">
+  <ng-container>
     <div class="">
       <button type="button" class="btn btn-info p-3" (click)="openModalCadastroDeContas()">Cadastrar Contas</button>
-      <app-list-registros [categorias]="categorias"></app-list-registros>
       <app-lista-de-contas></app-lista-de-contas>
     </div>
   </ng-container>

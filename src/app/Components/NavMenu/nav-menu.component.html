@@ -9,28 +9,39 @@
         type="button"
         data-toggle="collapse"
         data-target=".navbar-collapse"
-        aria-label="Toggle navigation"       
+        aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-       
       >
         <ul class="navbar-nav flex-grow">
           <li
-            class="nav-item"
+            class="btn btn-outline-primary nav-item m-1"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link" [routerLink]="['/']">Dashboard</a>
+            <a class="nav-link" [routerLink]="['/']"
+              ><i class="far fa-chart-bar"></i>Dashboard
+            </a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/contas']">Contas</a>
-          </li>           
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/usuario']">Meus Dados</a>
-          </li>            
+          <li
+            class="btn btn-outline-success nav-item m-1"
+            [routerLinkActive]="['link-active']"
+          >
+            <a class="nav-link" [routerLink]="['/contas']"
+              ><i class="far fa-money-bill-alt"></i>Contas</a
+            >
+          </li>
+          <li
+            class="btn btn-outline-warning nav-item m-1"
+            [routerLinkActive]="['link-active']"
+          >
+            <a class="nav-link" [routerLink]="['/usuario']"
+              ><i class="far fa-user"></i>Meus Dados</a
+            >
+          </li>
         </ul>
       </div>
     </div>

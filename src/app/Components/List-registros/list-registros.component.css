@@ -6,3 +6,7 @@
 #tipoConta{
   cursor: not-allowed;
 }
+
+#tituloCadastrarCategoria{
+  font-weight: bold;
+}
