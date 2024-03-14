@@ -1,0 +1,17 @@
+.novaConta {
+  display: flex;
+  float: right;
+}
+
+#tipoConta {
+  cursor: not-allowed;
+}
+
+#tituloCadastrarCategoria {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 16px;
+  text-align: center;
+}

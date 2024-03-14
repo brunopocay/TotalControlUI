@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Views/Home/home.component';
+import { HomeComponent } from './Views/Dashboard/home.component';
 import { LoginComponent } from './Views/Login/login.component';
 import { authGuard } from './Guards/auth.guard';
-import { InfoUsuarioComponent } from './Views/InfoUsuarios/infousuario.component';
-import { SelecaoMesComponent } from './Views/SelecaoMes/selecaomes.component';
-import { RegistroMensaisComponent } from './Views/RegistrosMensais/registrosmensais.component';
+import { InfoUsuarioComponent } from './Views/MeusDados/infousuario.component';
+import { SelecaoMesComponent } from './Views/ListaMeses/selecaomes.component';
+import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-contas.component';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'contas', component: SelecaoMesComponent, canActivate: [authGuard] },
   {
     path: 'contas/tabelacontas/:mes',
-    component: RegistroMensaisComponent,
+    component: ListaDeContasComponent,
     canActivate: [authGuard],
   },
   { path: '**', redirectTo: '/login' },

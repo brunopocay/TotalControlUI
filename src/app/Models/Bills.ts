@@ -1,13 +1,12 @@
-import { Category, TipoCategoria } from "./Category";
-import { MesControle } from "./Month";
+import { Category, TipoConta } from './Category';
+import { MesControle } from './Month';
 
 export interface Bills {
-  id: number;
-  categoriaId: Category;
-  mesId: MesControle;
-  diaInclusao: Date;
-  tipoConta: TipoCategoria;
+  id?: number;
+  categoria?: Category;
+  mesId: MesControle | number;
+  diaInclusao?: Date | string;
+  tipoConta: TipoConta;
   valorDaConta: number;
   descricao: string;
 }
-

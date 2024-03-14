@@ -1,51 +1,33 @@
-<div class="content">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nome da Categoria</th>
-          <th scope="col">Tipo de Conta</th>
-          <th scope="col">Data Inclusão</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Valor(R$)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="row">
-            <select class="form-select">
-              <option value="" selected disabled>Categorias</option>
-              <option>teste</option>
-            </select>
-          </td>
-          <td>
-            <input
-              id="tipoConta"
-              class="form-control"                
-              readonly          
-            />
-          </td>
-          <td>
-            <input             
-              class="form-control"
-              readonly
-            />
-          </td>
-          <td>
-            <input
-              type="text"
-              class="form-control mb-2"            
-              placeholder="Digite a descrição"                      
-            />
-          </td>
-          <td>
-            <input
-              class="form-control mb-2"         
-              placeholder="R$"                    
-              currencyMask
-              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container mt-4">
+  <ng-container>
+    <div class="">
+      <button type="button" class="btn btn-info p-3" (click)="openModalCadastroDeContas()">
+        Cadastrar Contas
+      </button>
+      <div class="content">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nome da Categoria</th>
+              <th scope="col">Tipo de Conta</th>
+              <th scope="col">Data Inclusão</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Valor(R$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let conta of Contas; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ conta.categoria?.nomeCategoria }}</td>
+              <td>{{ conta.tipoConta }}</td>
+              <td>{{ conta.diaInclusao }}</td>
+              <td>{{ conta.descricao }}</td>
+              <td>R${{ conta.valorDaConta }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
 </div>

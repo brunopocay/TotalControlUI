@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Users } from 'src/app/Models/Users';
 import { AuthService } from 'src/app/Services/auth.service';
-import { DialogComponentService } from 'src/app/Shared/dialog-component.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,7 +21,8 @@ export class InfoUsuarioComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private modalLogout: DialogComponentService
+    private modalService: NgbModal,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +30,19 @@ export class InfoUsuarioComponent implements OnInit {
   }
 
   public openModal() {
-    this.modalLogout.confirm('Logout', 'Deseja fazer logout do sistema ?');
+    Swal.fire({
+      title: 'Você deseja fazer logout?',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText:'Não',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      confirmButtonColor: '#3085d6',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.logout();
+      }
+    });
   }
 
   getMe() {
@@ -38,5 +53,10 @@ export class InfoUsuarioComponent implements OnInit {
       this.Users.Sexo = parseClaims[2];
       this.Users.DataNasc = parseClaims[3];
     });
+  }
+
+  logout(): void {
+    this.authService.removeAuthToken();
+    this.route.navigate(['/login']);
   }
 }

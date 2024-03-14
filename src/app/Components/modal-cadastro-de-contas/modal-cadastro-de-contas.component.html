@@ -1,11 +1,131 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{ title }}</h4>
-      <button type="button" class="btn btn-dark" (click)="dismiss()"><i class="fa-solid fa-xmark"></i></button>
+  <h4 class="modal-title">{{ title }}</h4>
+  <button type="button" class="btn btn-dark" (click)="dismiss()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="content" *ngIf="showFormContas; else showFormCategorias">
+    <form [formGroup]="registrationFormContas" (ngSubmit)="(onRegister)">
+      <label for="categoria" class="form-label">Nome da Categoria</label>
+      <div class="input-group mb-3">
+        <select
+          id="categoria"
+          class="form-select w-auto"
+          formControlName="categoria"
+          (change)="GetSelectedCategoryType()"
+        >
+          <option value="" selected disabled>Categorias</option>
+          <option
+            *ngFor="let categoria of listCategorias"
+            [value]="categoria.id"
+          >
+            {{ categoria.nomeCategoria }}
+          </option>
+        </select>
+        <button (click)="ToogleForm()" class="btn btn-primary form-control">
+          Cadastrar Categoria
+        </button>
+      </div>
+      <div class="mb-3">
+        <label for="tipoConta" class="form-label">Tipo de Conta</label>
+        <input
+          id="tipoConta"
+          class="form-control"
+          formControlName="tipoConta"
+          [value]="registrationFormContas.get('tipoConta')!.value"
+          readonly
+        />
+      </div>
+      <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input
+          id="descricao"
+          type="text"
+          class="form-control"
+          placeholder="Digite a descrição"
+          formControlName="descricao"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="valorDaConta" class="form-label">Valor(R$)</label>
+        <input
+          id="valorDaConta"
+          class="form-control"
+          placeholder="R$"
+          formControlName="valorDaConta"
+          required
+          currencyMask
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        />
+      </div>
+    </form>
+  </div>
+  <ng-template #showFormCategorias>
+    <div>
+      <form
+        [formGroup]="registrationFormCategoria"
+        (ngSubmit)="RegisterCategory()"
+      >
+        <div class="card">
+          <div class="card-body text-center">
+            <p class="card-text"></p>
+            <h1>
+              Abaixo você poderá cadastrar uma categoria pelo nome que deseja, e
+              posteriormente usar no registro de novas contas mensais.<br />
+            </h1>
+            <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <div class="mt-2 form-group">
+            <label for="ano">Digite o nome da categoria</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              formControlName="nomeCategoria"
+              required
+            />
+            <div
+              *ngIf="
+                (registrationFormCategoria.get('nomeCategoria')?.invalid &&
+                  registrationFormCategoria.get('nomeCategoria')?.touched) ||
+                registrationFormCategoria.get('nomeCategoria')?.dirty
+              "
+            >
+              <div
+                *ngIf="registrationFormCategoria.get('nomeCategoria')?.errors?.['required']"
+                class="alert alert-danger"
+              >
+                Nome obrigatório
+              </div>
+            </div>
+
+            <select
+              class="form-select"
+              formControlName="tipoCategorias"
+              required
+            >
+              <option value="" selected disabled>Tipo da conta</option>
+              <option
+                *ngFor="let tipo of tipoCategoriaArray"
+                [value]="tipo.value"
+              >
+                {{ tipo.key }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="modal-body">
-      <app-list-registros></app-list-registros>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="registrar()">{{ btnOkText }}</button>
-      <button type="button" class="btn btn-danger" (click)="cancelar()">{{ btnCancelText }}</button>
+  </ng-template>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="registrar()">
+    {{ btnOkText }}
+  </button>
+  <button type="button" class="btn btn-danger" (click)="cancelar()">
+    {{ btnCancelText }}
+  </button>
 </div>

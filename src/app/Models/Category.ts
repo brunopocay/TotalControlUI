@@ -1,14 +1,14 @@
 import { Users } from "./Users";
 
 export class Category {
-  categoriaId?: number;
+  id?: number;
   userId?: number;
   user?: Users | null;
-  nomeCategoria: string;
-  tipoCategorias?: TipoCategoria;
+  nomeCategoria?: string;
+  tipoCategorias?: TipoConta;
 }
 
-export enum TipoCategoria {
+export enum TipoConta {
   Despesa = 1,
   Renda = 2,
   RendaExtra = 3,

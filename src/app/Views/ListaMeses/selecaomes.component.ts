@@ -41,7 +41,6 @@ export class SelecaoMesComponent implements OnInit {
     this.service.GetMonth().subscribe((result: MesControle[]) => {
       this.months = [];
       this.months = result;
-      console.log(this.months);
     });
   }
 
