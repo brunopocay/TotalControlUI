@@ -1,4 +1,4 @@
-import { Users } from "./Users";
+import { Users } from './Users';
 
 export class Category {
   id?: number;
@@ -14,5 +14,3 @@ export enum TipoConta {
   RendaExtra = 3,
   RetornoInvestimento = 4,
 }
-
-

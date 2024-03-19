@@ -4,7 +4,7 @@ import { MesControle } from './Month';
 export interface Bills {
   id?: number;
   categoria?: Category;
-  mesId: MesControle | number;
+  mes: MesControle;
   diaInclusao?: Date | string;
   tipoConta: TipoConta;
   valorDaConta: number;

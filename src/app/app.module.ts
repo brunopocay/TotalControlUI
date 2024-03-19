@@ -18,6 +18,7 @@ import { ListaDeContasComponent } from './Components/lista-de-contas/lista-de-co
 import { LoginDiretoComponent } from './Components/login/login-direto/login-direto.component';
 import { RegisterComponent } from './Components/login/register/register.component';
 import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-contas/modal-cadastro-de-contas.component';
+import { TableListaContasComponent } from './Components/table-lista-contas/table-lista-contas.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-c
     SelecaoMesComponent,
     ListaDeContasComponent,
     ModalCadastroDeContasComponent,
+    TableListaContasComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,8 +41,8 @@ export class ModalCadastroDeContasComponent {
   @Output() onRegister: EventEmitter<any> = new EventEmitter();
 
   tipoCategoriaEnum: { [value: string]: TipoConta } = {
-    Despesa: TipoConta.Despesa,
-    Renda: TipoConta.Renda,
+    'Despesa': TipoConta.Despesa,
+    'Renda': TipoConta.Renda,
     'Renda Extra': TipoConta.RendaExtra,
     'Retorno Investimento': TipoConta.RetornoInvestimento,
   };
@@ -121,7 +121,7 @@ export class ModalCadastroDeContasComponent {
       const formValues = this.registrationFormContas.value;
       const formData: Bills = {
         categoria: this.categoriaSelecionada,
-        mesId: this.mes.id!,
+        mes: this.mes,
         diaInclusao: TimeToBrazil(Date.now()),
         tipoConta: formValues.tipoConta,
         valorDaConta: formValues.valorDaConta,

@@ -29,6 +29,11 @@ export class AuthService {
     return this.http.get(`${environment.apiURL}/${this.url}`,httpOptions)
   }
 
+  public CheckTokenValidity(): Observable<string> {
+    const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' }),responseType: 'text' as const};
+    return this.http.get(`${environment.apiURL}/${this.url}/validate-token`,httpOptions);
+  }
+
   public setAuthToken(token: string): void {
     localStorage.setItem(this.authTokenkey, token);
   }

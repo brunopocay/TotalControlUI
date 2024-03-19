@@ -1,33 +1,45 @@
-<div class="container mt-4">
+<div class="container-fluid vh-100 mt-4">
   <ng-container>
     <div class="">
-      <button type="button" class="btn btn-info p-3" (click)="openModalCadastroDeContas()">
+      <button
+        type="button"
+        class="btn btn-info p-3"
+        (click)="openModalCadastroDeContas()"
+      >
         Cadastrar Contas
       </button>
-      <div class="content">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Nº</th>
-              <th scope="col">Nome da Categoria</th>
-              <th scope="col">Tipo de Conta</th>
-              <th scope="col">Data Inclusão</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Valor(R$)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let conta of Contas; let i = index">
-              <th scope="row">{{ i + 1 }}</th>
-              <td>{{ conta.categoria?.nomeCategoria }}</td>
-              <td>{{ conta.tipoConta }}</td>
-              <td>{{ conta.diaInclusao }}</td>
-              <td>{{ conta.descricao }}</td>
-              <td>R${{ conta.valorDaConta }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <hr>
+      <div class="table-responsive">
+        <h1>Rendas</h1>  
+        <div *ngIf="tipoRenda.length > 0; else listaVazia">
+          <app-table-lista-contas [tableColor]="'success'" [listaDeContas]="tipoRenda"></app-table-lista-contas>   
+        </div>
+      </div>
+       <hr>
+      <div class="table-responsive">
+        <h1>Rendas Extra</h1>
+        <div *ngIf="tipoRendaExtra.length > 0; else listaVazia">
+          <app-table-lista-contas [tableColor]="'warning'" [listaDeContas]="tipoRendaExtra"></app-table-lista-contas>
+        </div>
+      </div>
+       <hr>
+      <div class="table-responsive">
+        <h1>Despesas</h1>
+        <div *ngIf="tipoDespesa.length > 0; else listaVazia">
+          <app-table-lista-contas [tableColor]="'danger'" [listaDeContas]="tipoDespesa"></app-table-lista-contas>
+        </div>
+      </div>
+       <hr>
+      <div class="table-responsive">
+        <h1>Retorno de Investimento</h1>
+        <div *ngIf="tipoRetornoInvestimento.length > 0; else listaVazia">
+          <app-table-lista-contas [tableColor]="'info'" [listaDeContas]="tipoRetornoInvestimento"></app-table-lista-contas>
+        </div>
       </div>
     </div>
   </ng-container>
 </div>
+
+<ng-template #listaVazia>
+  <span>Nenhum registro adicionado <i class="fa-solid fa-money-bills fa-lg"></i></span>
+</ng-template>

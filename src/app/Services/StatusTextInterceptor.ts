@@ -1,8 +1,14 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
-import { Observable, catchError, throwError } from "rxjs";
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 export class CustomErrorHttpInterceptor implements HttpInterceptor {
-
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -13,10 +19,11 @@ export class CustomErrorHttpInterceptor implements HttpInterceptor {
           error: httpErrorResponse.error,
           headers: httpErrorResponse.headers,
           status: httpErrorResponse.status,
-          statusText: 'Failed Attempt',
+          statusText: httpErrorResponse.message,
         });
 
-        return throwError(() => newHttpErrorResponse); 
-      }));
+        return throwError(() => newHttpErrorResponse);
+      })
+    );
   }
 }

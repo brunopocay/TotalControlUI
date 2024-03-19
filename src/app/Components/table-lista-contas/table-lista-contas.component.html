@@ -1,0 +1,22 @@
+<table class="table table-{{ tableColor }} table-hover">
+  <thead class="">
+    <tr>
+      <th scope="col">Nº</th>
+      <th scope="col">Nome da Categoria</th>
+      <th scope="col">Tipo de Conta</th>
+      <th scope="col">Data Inclusão</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Valor(R$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contas of listaDeContas; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ contas.categoria?.nomeCategoria }}</td>
+      <td>{{ contas.tipoConta }}</td>
+      <td>{{ contas.diaInclusao }}</td>
+      <td>{{ contas.descricao }}</td>
+      <td>{{ MaskValorConta(contas.valorDaConta) }}</td>
+    </tr>
+  </tbody>
+</table>

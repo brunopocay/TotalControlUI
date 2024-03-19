@@ -11,9 +11,7 @@ import { AuthService } from '../Services/auth.service';
 
   constructor(private authService: AuthService, private route: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | boolean {        
+  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean> | boolean {        
     const authToken = this.authService.getAuthToken();
 
     if(authToken){

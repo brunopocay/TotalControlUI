@@ -5,7 +5,6 @@ import { Users } from 'src/app/Models/Users';
 import { AuthService } from 'src/app/Services/auth.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-info-usuario',
   templateUrl: './infousuario.component.html',
@@ -34,7 +33,7 @@ export class InfoUsuarioComponent implements OnInit {
       title: 'Você deseja fazer logout?',
       icon: 'question',
       showCancelButton: true,
-      cancelButtonText:'Não',
+      cancelButtonText: 'Não',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
       confirmButtonColor: '#3085d6',
@@ -57,6 +56,7 @@ export class InfoUsuarioComponent implements OnInit {
 
   logout(): void {
     this.authService.removeAuthToken();
+    localStorage.removeItem('monthsData');
     this.route.navigate(['/login']);
   }
 }

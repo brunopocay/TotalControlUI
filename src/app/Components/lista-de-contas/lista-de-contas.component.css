@@ -1,3 +1,11 @@
+div {
+  font-family: "Montserrat", sans-serif;
+}
+
 .container {
   display: flex;
+}
+
+h1 {
+  font-size: 24px;
 }

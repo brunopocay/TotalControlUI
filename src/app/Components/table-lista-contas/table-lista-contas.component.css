@@ -1,0 +1,21 @@
+.table{
+    margin-top: 20px;
+    border: 2px solid black;
+    color: white;
+}
+
+.table-success {
+  --bs-table-bg: rgba(54, 247, 54, 0.625);
+}
+.table-danger {
+  --bs-table-bg: rgba(235, 0, 0, 0.625);
+}
+.table-warning {
+  --bs-table-bg: rgba(217, 255, 0, 0.625);
+}
+.table-info {
+  --bs-table-bg: rgba(0, 195, 255, 0.625);
+}
+
+
+
