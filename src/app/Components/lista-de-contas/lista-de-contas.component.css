@@ -1,11 +1,72 @@
+/* Estilos gerais */
 div {
   font-family: "Montserrat", sans-serif;
 }
 
+h1 {
+  font-size: 24px;
+}
+
+/* Estilos do container dos cards */
 .container {
   display: flex;
 }
 
-h1 {
-  font-size: 24px;
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 4px 16px;
+  /* Ajustado para as imagens de fundo */
+}
+
+/* Estilos dos cards */
+.card {
+  width: 240px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  opacity: 4%;
+}
+
+.card:nth-child(1) {
+  background-color: rgba(54, 247, 54, 0.625);
+}
+.card:nth-child(2) {
+  background-color: rgba(217, 255, 0, 0.625);
+}
+.card:nth-child(3) {
+  background-color: rgba(235, 0, 0, 0.625);
+}
+.card:nth-child(4) {
+  background-color: rgba(0, 195, 255, 0.625);
+}
+.card:nth-child(5) {
+  background-color: rgba(212, 0, 255, 0.625);
+}
+
+.card strong {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+  color: black;
+  text-align: center;
+}
+
+.card p {
+  font-size: 28px;
 }

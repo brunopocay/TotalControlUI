@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MaskValores } from 'src/app/Helpers/MaskValores';
 import { Bills } from 'src/app/Models/Bills';
 
 @Component({
@@ -10,11 +11,7 @@ export class TableListaContasComponent {
   @Input() listaDeContas: Bills[];
   @Input() tableColor: string;
 
-  protected MaskValorConta(valor: number): string {
-    const valorFormatado = valor.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    });
-    return valorFormatado;
+  MaskValores(valor: number): string {
+    return MaskValores(valor);
   }
 }

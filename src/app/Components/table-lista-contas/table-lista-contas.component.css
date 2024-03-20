@@ -1,7 +1,10 @@
-.table{
-    margin-top: 20px;
-    border: 2px solid black;
-    color: white;
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 2px solid black;
+  color: white;
+  box-shadow: 5px 5px 5px #888888;
+  text-align: left;
 }
 
 .table-success {
@@ -16,6 +19,3 @@
 .table-info {
   --bs-table-bg: rgba(0, 195, 255, 0.625);
 }
-
-
-

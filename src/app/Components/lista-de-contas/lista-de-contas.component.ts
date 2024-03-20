@@ -1,8 +1,11 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Bills } from 'src/app/Models/Bills';
 import { ControleMensalService } from 'src/app/Services/controle-mensal.service';
 import { ModalCadastroDeContasComponent } from '../modal-cadastro-de-contas/modal-cadastro-de-contas.component';
+import { GetSaldosService } from 'src/app/Services/get-saldos.service';
+import { Saldos } from 'src/app/Models/Saldos';
+import {  Despesas,  Renda,  RendaExtra,  RetornoInvestimento,  SaldoTotal} from 'src/app/Helpers/consts';
 
 @Component({
   selector: 'app-lista-de-contas',
@@ -15,21 +18,50 @@ export class ListaDeContasComponent implements OnInit {
   tipoRendaExtra: Bills[] = [];
   tipoDespesa: Bills[] = [];
   tipoRetornoInvestimento: Bills[] = [];
+  saldosRenda: Saldos | undefined;
+  saldosRendaExtra: Saldos | undefined;
+  saldosDespesa: Saldos | undefined;
+  saldosInvestimento: Saldos | undefined;
+  saldoTotal: Saldos | undefined;
+  mes = JSON.parse(localStorage.getItem('monthsData')!);
 
   constructor(
     private billsService: ControleMensalService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private saldosService: GetSaldosService
   ) {}
 
   ngOnInit(): void {
     this.GetContas();
+    this.GetSaldos();
+  }
+
+  GetSaldos() {
+    this.saldosService.getSaldos(this.mes.id).subscribe((listaDeSaldos) => {
+      this.saldosRenda = listaDeSaldos.find(
+        (saldo) => saldo.tipoConta == Renda
+      );
+      this.saldosRendaExtra = listaDeSaldos.find(
+        (saldo) => saldo.tipoConta == RendaExtra
+      );
+      this.saldosDespesa = listaDeSaldos.find(
+        (saldo) => saldo.tipoConta == Despesas
+      );
+      this.saldosInvestimento = listaDeSaldos.find(
+        (saldo) => saldo.tipoConta == RetornoInvestimento
+      );
+      this.saldoTotal = listaDeSaldos.find(
+        (saldo) => saldo.tipoConta == SaldoTotal
+      );
+    });
   }
 
   GetContas() {
     this.billsService.GetControl().subscribe((ListaDeContas) => {
       this.Contas = [];
-      let mes = JSON.parse(localStorage.getItem('monthsData')!);
-      let ListaDeContasFiltrados = ListaDeContas.filter((conta) => conta.mes.id === mes.id);
+      let ListaDeContasFiltrados = ListaDeContas.filter(
+        (conta) => conta.mes.id === this.mes.id
+      );
       this.Contas = ListaDeContasFiltrados;
       this.FilterTiposContas(ListaDeContasFiltrados);
     });
@@ -43,6 +75,7 @@ export class ListaDeContasComponent implements OnInit {
     modalRef.componentInstance.onRegister.subscribe((newBill: Bills) => {
       this.Contas.push(newBill);
       this.FilterTiposContas(this.Contas);
+      this.GetSaldos();
     });
   }
 

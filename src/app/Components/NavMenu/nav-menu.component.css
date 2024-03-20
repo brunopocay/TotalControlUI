@@ -50,3 +50,27 @@ ul > li > a:hover {
   background-color: black; /* Cor da linha (azul neste caso) */
   margin-top: 1px;
 }
+
+.btn-outline-primary {
+  --bs-btn-color: rgba(0, 195, 255, 0.625);
+  --bs-btn-border-color: rgba(0, 195, 255, 0.625);
+  --bs-btn-hover-color: rgba(0, 195, 255, 0.625);
+  --bs-btn-hover-bg: rgba(0, 195, 255, 0.625);
+  --bs-btn-hover-border-color: rgba(0, 195, 255, 0.625);
+}
+
+.btn-outline-success {
+  --bs-btn-color: rgba(54, 247, 54, 0.625);
+  --bs-btn-border-color: rgba(54, 247, 54, 0.625);
+  --bs-btn-hover-color: rgba(54, 247, 54, 0.625);
+  --bs-btn-hover-bg: rgba(54, 247, 54, 0.625);
+  --bs-btn-hover-border-color: rgba(54, 247, 54, 0.625);
+}
+
+.btn-outline-warning {
+  --bs-btn-color: rgba(217, 255, 0, 0.625);
+  --bs-btn-border-color: rgba(217, 255, 0, 0.625);
+  --bs-btn-hover-color: rgba(217, 255, 0, 0.625);
+  --bs-btn-hover-bg: rgba(217, 255, 0, 0.625);
+  --bs-btn-hover-border-color: rgba(217, 255, 0, 0.625);
+}
