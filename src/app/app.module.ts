@@ -19,6 +19,8 @@ import { LoginDiretoComponent } from './Components/login/login-direto/login-dire
 import { RegisterComponent } from './Components/login/register/register.component';
 import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-contas/modal-cadastro-de-contas.component';
 import { TableListaContasComponent } from './Components/table-lista-contas/table-lista-contas.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { ContainerComponent } from './Components/container/container.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { TableListaContasComponent } from './Components/table-lista-contas/table
     ListaDeContasComponent,
     ModalCadastroDeContasComponent,
     TableListaContasComponent,
+    FooterComponent,
+    ContainerComponent,
   ],
   imports: [
     BrowserModule,

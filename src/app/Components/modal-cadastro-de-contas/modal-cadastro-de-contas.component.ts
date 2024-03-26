@@ -160,7 +160,7 @@ export class ModalCadastroDeContasComponent {
     if (this.registrationFormCategoria.valid) {
       const formData = this.registrationFormCategoria.value;
       this.categoryservice
-        .NewCategory(formData)
+      .NewCategory(formData)
         .pipe(
           catchError((error: HttpErrorResponse) => {
             if (error.status) {

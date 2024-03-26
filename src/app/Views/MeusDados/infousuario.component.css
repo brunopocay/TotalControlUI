@@ -1,21 +1,22 @@
-.container{
-    font-family: 'Montserrat', sans-serif;
+.container {
+  font-family: "Montserrat", sans-serif;
 }
 
 .user-profile {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 5px;
-    width: 300px;
-    text-align: center;
-    margin: 0 auto;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .user-profile img {
-    max-width: 200px;
-    border-radius: 50%;
+  max-width: 200px;
+  border-radius: 50%;
 }
 
-p:hover{
-    cursor: auto;
+p:hover {
+  cursor: auto;
 }

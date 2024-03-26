@@ -1,38 +1,58 @@
-<div id="loggedin" class="container w-50 m-auto user-profile mb-4 mt-4">
-
+<app-container>
+  <div id="loggedin" class="container w-50 m-auto user-profile mb-4 mt-4">
     <h2>Meus Dados</h2>
-        <div>
-            <img           
-            id="default-avatar" 
-            src="../../../assets/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posición-de-foto-gris-vector-de.jpg" 
-            alt="Foto de perfil do usuário"
-            >
-            <div>
-                <input id="fotoUsuario" type="file" style="display: none;" accept="image/jpeg, image/png">
-                Adicione sua foto de perfil<br>
-                <label for="fotoUsuario" type="button" class="w-auto btn btn-outline-info"><i class="fa-solid fa-upload"></i></label>            
-            </div>
-        </div>
-        
-        <div>
-            <p class="mt-4 btn btn-outline-success w-auto">Nome: <span>{{ Users.Nome }}</span></p>
-        </div>
+    <div>
+      <img
+        id="default-avatar"
+        src="../../../assets/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posición-de-foto-gris-vector-de.jpg"
+        alt="Foto de perfil do usuário"
+      />
+      <div>
+        <input
+          id="fotoUsuario"
+          type="file"
+          style="display: none"
+          accept="image/jpeg, image/png"
+        />
+        Adicione sua foto de perfil<br />
+        <label
+          for="fotoUsuario"
+          type="button"
+          class="w-auto btn btn-outline-info"
+          ><i class="fa-solid fa-upload"></i
+        ></label>
+      </div>
+    </div>
 
-        <div>
-            <p class="btn btn-outline-success w-auto">Sexo: <span style="font-weight: bold;">{{ Users.Sexo }}</span></p>
-        </div>
-        
-        <div>
-            <p class="btn btn-outline-success w-auto">Email: <span style="font-weight: bold;">{{ Users.Email }}</span></p>
-        </div>
+    <div>
+      <p class="mt-4 btn btn-outline-success w-auto">
+        Nome: <span>{{ Users.Nome }}</span>
+      </p>
+    </div>
 
-        <div>
-            <p class="btn btn-outline-success w-auto">Data de Nascimento: <span style="font-weight: bold;">{{ Users.DataNasc }}</span></p>
-        </div>
+    <div>
+      <p class="btn btn-outline-success w-auto">
+        Sexo: <span style="font-weight: bold">{{ Users.Sexo }}</span>
+      </p>
+    </div>
 
-        <div>
-            <button (click)="openModal()" class="btn btn-danger w-auto">Logout <span style="font-weight: bold;"></span></button>
-        </div>
+    <div>
+      <p class="btn btn-outline-success w-auto">
+        Email: <span style="font-weight: bold">{{ Users.Email }}</span>
+      </p>
+    </div>
 
-</div>
-  
+    <div>
+      <p class="btn btn-outline-success w-auto">
+        Data de Nascimento:
+        <span style="font-weight: bold">{{ Users.DataNasc }}</span>
+      </p>
+    </div>
+
+    <div>
+      <button (click)="openModal()" class="btn btn-danger w-auto">
+        Logout <span style="font-weight: bold"></span>
+      </button>
+    </div>
+  </div>
+</app-container>

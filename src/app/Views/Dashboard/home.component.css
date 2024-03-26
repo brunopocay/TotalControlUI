@@ -1,8 +1,12 @@
-div{
-    font-family: 'Montserrat', sans-serif;
+div {
+  font-family: "Montserrat", sans-serif;
 }
 
-p{
-    font-weight: bold;
-    font-size:18px;
+.container {
+  width: 100%;
+}
+
+p {
+  font-weight: bold;
+  font-size: 18px;
 }

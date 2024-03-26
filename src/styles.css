@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 /* Provide sufficient contrast against white background */
 a {
@@ -26,10 +25,9 @@ code {
   background-color: #f8d7da;
   text-align: center;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   height: 5px;
   font-size: 12px;
   font-weight: normal;
 }
-

@@ -1,7 +1,11 @@
 .not-authenticated {
-    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(75, 0, 255)) !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    overflow-y: hidden !important;
-    min-height: 100vh !important;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255),
+    rgb(75, 0, 255)
+  ) !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  overflow-y: hidden !important;
+  min-height: 100vh !important;
 }

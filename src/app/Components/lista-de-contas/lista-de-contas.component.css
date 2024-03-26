@@ -9,7 +9,7 @@ h1 {
 
 /* Estilos do container dos cards */
 .container {
-  display: flex;
+  padding-top: 32px;
 }
 
 .card-container {
@@ -25,7 +25,7 @@ h1 {
   width: 240px;
   height: 150px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.699);
   transition: transform 0.3s ease;
   position: relative;
   justify-content: center;

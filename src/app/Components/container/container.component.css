@@ -1,0 +1,6 @@
+.container{
+    min-height: 768px;
+    border-radius: 15px;
+    background: whitesmoke;
+    margin-top: -10vh;
+}

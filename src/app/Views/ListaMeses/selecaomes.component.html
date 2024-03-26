@@ -1,57 +1,59 @@
-<div class="d-flex">
-  <section>
-    <article class="content row m-2 p-2">
-      <div   
-        class="card" 
-        *ngFor="let mes of months"               
-      >
-        <img
-          class="card-img-top"
-          src="../../../assets/transferir.png"
-          alt="Card image cap"
-        />
-        <div class="card-body" >
-          <p class="card-text">{{mes.nomeMes}} / {{mes.ano}}</p>
-          <button (click)="NavigateToTableMonth(mes, mes.nomeMes + mes.ano)" class="btn btn-info m-2">Entrar</button>
-          <button (click)="ExcluirMes(mes)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+<app-container>
+  <div class="d-flex">
+    <section>
+      <article class="content row m-2 p-2">
+        <div   
+          class="card" 
+          *ngFor="let mes of months"               
+        >
+          <img
+            class="card-img-top"
+            src="../../../assets/transferir.png"
+            alt="Card image cap"
+          />
+          <div class="card-body" >
+            <p class="card-text">{{mes.nomeMes}} / {{mes.ano}}</p>
+            <button (click)="NavigateToTableMonth(mes, mes.nomeMes + mes.ano)" class="btn btn-info m-2">Entrar</button>
+            <button (click)="ExcluirMes(mes)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+          </div>
         </div>
-      </div>
-    </article>
-  </section>
-  <aside>
-    <article>
-      <div class="card">
-        <img class="card-img-top" src="../../../assets/transferir.png" alt="Imagem cadastro do mês" />
-        <div class="card-body">
-          <p class="card-text">
-            Comece agora a controlar suas contas mensais !<br /><br />
-            <strong>Cadastre abaixo o mês desejado<br /></strong>
-            <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
-          </p>
+      </article>
+    </section>
+    <aside>
+      <article>
+        <div class="card">
+          <img class="card-img-top" src="../../../assets/transferir.png" alt="Imagem cadastro do mês" />
+          <div class="card-body">
+            <p class="card-text">
+              Comece agora a controlar suas contas mensais !<br /><br />
+              <strong>Cadastre abaixo o mês desejado<br /></strong>
+              <i class="fa-solid fa-circle-arrow-down fa-xl"></i>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="mt-4 text-center">
-        <select class="form-select" [(ngModel)]="selectedMonth">
-            <option value="" selected disabled>Escolha o mês</option>
-            <option value="Janeiro">Janeiro</option>
-            <option value="Fevereiro">Fevereiro</option>
-            <option value="Março">Março</option>
-            <option value="Abril">Abril</option>
-            <option value="Maio">Maio</option>
-            <option value="Junho">Junho</option>
-            <option value="Julho">Julho</option>
-            <option value="Agosto">Agosto</option>
-            <option value="Setembro">Setembro</option>
-            <option value="Outubro">Outubro</option>
-            <option value="Novembro">Novembro</option>
-            <option value="Dezembro">Dezembro</option>
-        </select>
-        <div class="mt-2 form-group">
-          <label for="ano">Digite o ano</label>
-          <input type="text" class="form-control mb-2" id="ano" placeholder="2023" [(ngModel)]="month.ano">
-          <button type="button" (click)="cadastrarMes()" class="btn btn-outline-primary">Cadastrar Mês</button>
+        <div class="mt-4 text-center">
+          <select class="form-select" [(ngModel)]="selectedMonth">
+              <option value="" selected disabled>Escolha o mês</option>
+              <option value="Janeiro">Janeiro</option>
+              <option value="Fevereiro">Fevereiro</option>
+              <option value="Março">Março</option>
+              <option value="Abril">Abril</option>
+              <option value="Maio">Maio</option>
+              <option value="Junho">Junho</option>
+              <option value="Julho">Julho</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Setembro">Setembro</option>
+              <option value="Outubro">Outubro</option>
+              <option value="Novembro">Novembro</option>
+              <option value="Dezembro">Dezembro</option>
+          </select>
+          <div class="mt-2 form-group">
+            <label for="ano">Digite o ano</label>
+            <input type="text" class="form-control mb-2" id="ano" placeholder="2023" [(ngModel)]="month.ano">
+            <button type="button" (click)="cadastrarMes()" class="btn btn-outline-primary">Cadastrar Mês</button>
+          </div>
         </div>
-      </div>
-    </article>
-  </aside>
-</div>
+      </article>
+    </aside>
+  </div>
+</app-container>
