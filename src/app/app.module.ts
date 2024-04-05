@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule,NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { AuthInterceptor } from './Services/auth.interceptor';
@@ -21,6 +21,7 @@ import { ModalCadastroDeContasComponent } from './Components/modal-cadastro-de-c
 import { TableListaContasComponent } from './Components/table-lista-contas/table-lista-contas.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ContainerComponent } from './Components/container/container.component';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +47,8 @@ import { ContainerComponent } from './Components/container/container.component';
     ReactiveFormsModule,
     NgbModule,
     CurrencyMaskModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule
   ],
   providers: [
     {

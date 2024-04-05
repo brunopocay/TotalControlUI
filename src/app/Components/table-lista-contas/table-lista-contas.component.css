@@ -5,6 +5,7 @@
   color: white;
   box-shadow: 5px 5px 5px #000000;
   text-align: left;
+  cursor: default;
 }
 
 .table-success {
@@ -19,3 +20,4 @@
 .table-info {
   --bs-table-bg: rgba(0, 195, 255, 0.625);
 }
+

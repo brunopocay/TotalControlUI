@@ -1,22 +1,31 @@
+<input type="text" placeholder="Pesquise pela Data ou Descrição" [(ngModel)]="filtroPesquisa" class="w-100 form-control">
 <table class="table table-{{ tableColor }} table-hover">
-  <thead class="">
+  <thead>
     <tr>
-      <th scope="col">Nº</th>
+      <th scope="col">#</th>
       <th scope="col">Nome da Categoria</th>
       <th scope="col">Tipo de Conta</th>
       <th scope="col">Data Inclusão</th>
       <th scope="col">Descrição</th>
-      <th scope="col">Valor(R$)</th>
+      <th scope="col" style="cursor: pointer;" (click)="ordenarDados()">Valor(R$) <i [ngClass]="ordemAtual === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contas of listaDeContas; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ contas.categoria?.nomeCategoria }}</td>
-      <td>{{ contas.tipoConta }}</td>
-      <td>{{ contas.diaInclusao }}</td>
-      <td>{{ contas.descricao }}</td>
-      <td>{{ MaskValores(contas.valorDaConta) }}</td>
+    <tr *ngFor="let conta of contasPaginadas; let i = index">
+      <th scope="row">{{ (page - 1) * pageSize + i + 1 }}</th>
+      <td>{{ conta.categoria?.nomeCategoria }}</td>
+      <td>{{ conta.tipoConta }}</td>
+      <td>{{ conta.diaInclusao }}</td>
+      <td>{{ conta.descricao }}</td>
+      <td>{{ MaskValores(conta.valorDaConta) }}</td>
     </tr>
   </tbody>
 </table>
+
+<ngb-pagination class="d-flex justify-content-end"
+  [collectionSize]="contasFiltradas.length"
+  [(page)]="page"
+  [pageSize]="pageSize"
+>
+</ngb-pagination>
+  

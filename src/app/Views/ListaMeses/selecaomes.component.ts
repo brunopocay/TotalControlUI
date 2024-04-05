@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { MesControle } from 'src/app/Models/Month';
 import { MonthServicesService } from 'src/app/Services/month-services.service';
-import { DataMonthService } from 'src/app/Shared/data-month.service';
+import { DataMonthService } from 'src/app/Services/data-month.service';
 import Swal from 'sweetalert2';
 
 @Component({
