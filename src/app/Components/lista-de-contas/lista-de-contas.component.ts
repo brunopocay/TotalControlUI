@@ -68,7 +68,7 @@ export class ListaDeContasComponent implements OnInit {
   }
 
   openModalCadastroDeContas() {
-    const modalRef = this.modalService.open(ModalCadastroDeContasComponent);
+    const modalRef = this.modalService.open(ModalCadastroDeContasComponent, {size: 'lg'});
     modalRef.componentInstance.title = 'Cadastrar Contas e Categorias';
     modalRef.componentInstance.btnOkText = 'Cadastrar';
     modalRef.componentInstance.btnCancelText = 'Cancelar';
