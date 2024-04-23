@@ -9,3 +9,12 @@
   overflow-y: hidden !important;
   min-height: 100vh !important;
 }
+
+.authenticated {
+  background-image: 
+    url('/assets/imagem_fundo1.jpg'),
+    url('/assets/imagem_fundo2.jpg');
+  background-position: left, right;
+  background-size: 50% auto, 50% auto;
+  background-repeat: no-repeat;
+}

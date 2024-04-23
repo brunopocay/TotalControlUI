@@ -1,5 +1,5 @@
 a.navbar-brand {
-  white-space: normal;
+  white-space: nowrap;
   text-align: center;
   word-break: break-all;
 }
@@ -7,6 +7,7 @@ a.navbar-brand {
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -15,13 +16,9 @@ html {
 
 header {
   background-color: purple;
-  height: 30vh;
-  width: 90%;
-  margin: 16px auto auto auto;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-  border-radius: 15px;
-  z-index: 0;
-}
+  height: 25vh;
+  padding: 16px;
+} 
 
 .underline {
   width: 100%;

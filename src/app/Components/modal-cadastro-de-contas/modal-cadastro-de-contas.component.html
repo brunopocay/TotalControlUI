@@ -9,17 +9,10 @@
     <form [formGroup]="registrationFormContas" (ngSubmit)="(onRegister)">
       <label for="categoria" class="form-label">Nome da Categoria</label>
       <div class="input-group mb-3">
-        <select
-          id="categoria"
-          class="form-select w-auto"
-          formControlName="categoria"
-          (change)="GetSelectedCategoryType()"
-        >
+        <select id="categoria" class="form-select w-auto" formControlName="categoria"
+          (change)="GetSelectedCategoryType()">
           <option value="" selected disabled>Categorias</option>
-          <option
-            *ngFor="let categoria of listCategorias"
-            [value]="categoria.id"
-          >
+          <option *ngFor="let categoria of listCategorias" [value]="categoria.id">
             {{ categoria.nomeCategoria }}
           </option>
         </select>
@@ -29,45 +22,24 @@
       </div>
       <div class="mb-3">
         <label for="tipoConta" class="form-label">Tipo de Conta</label>
-        <input
-          id="tipoConta"
-          class="form-control"
-          formControlName="tipoConta"
-          [value]="registrationFormContas.get('tipoConta')!.value"
-          readonly
-        />
+        <input id="tipoConta" class="form-control" formControlName="tipoConta"
+          [value]="registrationFormContas.get('tipoConta')!.value" readonly />
       </div>
       <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <input
-          id="descricao"
-          type="text"
-          class="form-control"
-          placeholder="Digite a descrição"
-          formControlName="descricao"
-          required
-        />
+        <input id="descricao" type="text" class="form-control" placeholder="Digite a descrição"
+          formControlName="descricao" required />
       </div>
       <div class="mb-3">
         <label for="valorDaConta" class="form-label">Valor(R$)</label>
-        <input
-          id="valorDaConta"
-          class="form-control"
-          placeholder="R$"
-          formControlName="valorDaConta"
-          required
-          currencyMask
-          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
-        />
+        <input id="valorDaConta" class="form-control" placeholder="R$" formControlName="valorDaConta" required
+          currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" />
       </div>
     </form>
   </div>
   <ng-template #showFormCategorias>
     <div>
-      <form
-        [formGroup]="registrationFormCategoria"
-        (ngSubmit)="RegisterCategory()"
-      >
+      <form [formGroup]="registrationFormCategoria" (ngSubmit)="RegisterCategory()">
         <div class="card">
           <div class="card-body text-center">
             <p class="card-text"></p>
@@ -81,37 +53,21 @@
         <div class="mt-4 text-center">
           <div class="mt-2 form-group">
             <label for="ano">Digite o nome da categoria</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="nomeCategoria"
-              required
-            />
-            <div
-              *ngIf="
+            <input type="text" class="form-control mb-2" formControlName="nomeCategoria" required />
+            <div *ngIf="
                 (registrationFormCategoria.get('nomeCategoria')?.invalid &&
                   registrationFormCategoria.get('nomeCategoria')?.touched) ||
                 registrationFormCategoria.get('nomeCategoria')?.dirty
-              "
-            >
-              <div
-                *ngIf="registrationFormCategoria.get('nomeCategoria')?.errors?.['required']"
-                class="alert alert-danger"
-              >
+              ">
+              <div *ngIf="registrationFormCategoria.get('nomeCategoria')?.errors?.['required']"
+                class="alert alert-danger">
                 Nome obrigatório
               </div>
             </div>
 
-            <select
-              class="form-select"
-              formControlName="tipoCategorias"
-              required
-            >
+            <select class="form-select" formControlName="tipoCategorias" required>
               <option value="" selected disabled>Tipo da conta</option>
-              <option
-                *ngFor="let tipo of tipoCategoriaArray"
-                [value]="tipo.value"
-              >
+              <option *ngFor="let tipo of tipoCategoriaArray" [value]="tipo.value">
                 {{ tipo.key }}
               </option>
             </select>

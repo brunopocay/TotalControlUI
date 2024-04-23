@@ -2,113 +2,68 @@
   <div class="container-fluid w-auto mb-4">
     <div class="card-container">
       <div class="card">
-        <img
-          width="100"
-          height="100"
-          src="https://img.icons8.com/ios/100/money-bag.png"
-          alt="money-bag"
-        />
-        <strong class="text-center"
-          >RENDA
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/money-bag.png" alt="money-bag" />
+        <strong class="text-center">RENDA
           <p>R$ {{ saldosRenda?.saldoAtual }}</p>
         </strong>
       </div>
       <div class="card">
-        <img
-          width="100"
-          height="100"
-          src="https://img.icons8.com/material-outlined/96/money--v1.png"
-          alt="money-bag"
-        />
-        <strong class="text-center"
-          >Renda Extra
+        <img width="100" height="100" src="https://img.icons8.com/material-outlined/96/money--v1.png" alt="money-bag" />
+        <strong class="text-center">Renda Extra
           <p>R$ {{ saldosRendaExtra?.saldoAtual }}</p>
         </strong>
       </div>
       <div class="card">
-        <img
-          width="100"
-          height="100"
-          src="https://img.icons8.com/ios/100/split-money.png"
-          alt="money-bag"
-        />
-        <strong class="text-center"
-          >Despesa
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/split-money.png" alt="money-bag" />
+        <strong class="text-center">Despesa
           <p>R$ {{ saldosDespesa?.saldoAtual }}</p>
         </strong>
       </div>
       <div class="card">
-        <img
-          width="100"
-          height="100"
-          src="https://img.icons8.com/ios/100/investment.png"
-          alt="money-bag"
-        />
-        <strong class="text-center"
-          >Retorno de Investimento
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/investment.png" alt="money-bag" />
+        <strong class="text-center">Retorno de Investimento
           <p>R$ {{ saldosInvestimento?.saldoAtual }}</p>
         </strong>
       </div>
       <div class="card">
-        <img
-          width="100"
-          height="100"
-          src="https://img.icons8.com/ios/100/sales-balance.png"
-          alt="money-bag"
-        />
-        <strong class="text-center"
-          >Saldo Total
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/sales-balance.png" alt="money-bag" />
+        <strong class="text-center">Saldo Total
           <p>R$ {{ saldoTotal?.saldoAtual }}</p>
         </strong>
       </div>
     </div>
     <ng-container>
       <div class="">
-        <button
-          type="button"
-          class="btn btn-info p-3"
-          (click)="openModalCadastroDeContas()"
-        >
+        <button type="button" class="btn btn-info p-3" (click)="openModalCadastroDeContas()">
           Cadastrar Contas
         </button>
         <hr />
         <div>
           <h1>Rendas</h1>
           <div *ngIf="tipoRenda.length > 0; else listaVazia">
-            <app-table-lista-contas
-              [tableColor]="'success'"
-              [listaDeContas]="tipoRenda"
-            ></app-table-lista-contas>
+            <app-table-lista-contas [tableColor]="'success'" [listaDeContas]="tipoRenda"></app-table-lista-contas>
           </div>
         </div>
         <hr />
         <div>
           <h1>Rendas Extra</h1>
           <div *ngIf="tipoRendaExtra.length > 0; else listaVazia">
-            <app-table-lista-contas
-              [tableColor]="'warning'"
-              [listaDeContas]="tipoRendaExtra"
-            ></app-table-lista-contas>
+            <app-table-lista-contas [tableColor]="'primary'" [listaDeContas]="tipoRendaExtra"></app-table-lista-contas>
           </div>
         </div>
         <hr />
         <div>
           <h1>Despesas</h1>
           <div *ngIf="tipoDespesa.length > 0; else listaVazia">
-            <app-table-lista-contas
-              [tableColor]="'danger'"
-              [listaDeContas]="tipoDespesa"
-            ></app-table-lista-contas>
+            <app-table-lista-contas [tableColor]="'warning'" [listaDeContas]="tipoDespesa"></app-table-lista-contas>
           </div>
         </div>
         <hr />
         <div>
           <h1>Retorno de Investimento</h1>
           <div *ngIf="tipoRetornoInvestimento.length > 0; else listaVazia">
-            <app-table-lista-contas
-              [tableColor]="'info'"
-              [listaDeContas]="tipoRetornoInvestimento"
-            ></app-table-lista-contas>
+            <app-table-lista-contas [tableColor]="'secondary'"
+              [listaDeContas]="tipoRetornoInvestimento"></app-table-lista-contas>
           </div>
         </div>
       </div>
@@ -117,7 +72,5 @@
 </app-container>
 
 <ng-template #listaVazia>
-  <span
-    >Nenhum registro adicionado <i class="fa-solid fa-money-bills fa-lg"></i
-  ></span>
+  <span>Nenhum registro adicionado <i class="fa-solid fa-money-bills fa-lg"></i></span>
 </ng-template>

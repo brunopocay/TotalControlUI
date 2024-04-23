@@ -1,6 +1,12 @@
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 310px) {
   #register {
     width: auto !important;
+  }
+}
+
+@media screen and (min-width: 768px){
+  #register{
+    width: 50% !important;
   }
 }
 
@@ -8,12 +14,11 @@ a {
   cursor: pointer;
 }
 
-.container {
-  margin-top: 50px !important;
-  margin-bottom: 60px; /* Ajuste conforme a altura do footer */
+.customcontainer {
+  margin: 50px auto 60px auto;
   font-family: "Montserrat", sans-serif;
   background-color: white;
-}
+} 
 
 .login-form {
   border-top: 2px solid rgba(0, 0, 255, 0.375);

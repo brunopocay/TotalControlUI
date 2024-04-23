@@ -1,62 +1,11 @@
-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  
-}
-
-article {
-  font-family: "Montserrat", sans-serif;
-}
-
-aside {
-  width: 20%;
-  float: right;
-  height: 80vh;
-  padding-left: 0.5rem;
-  margin-top: 16px;
-  margin-left: auto;
-  box-shadow: inset 5px 0 5px -5px black;
-}
-
-p {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .card {
   max-width: 200px;
   height: auto;
   text-align: center;
+  margin: 16px;
+  padding: 8px;
 }
 
 .card-text{
   cursor: default;
-}
-
-.filter-menu {
-  background-color: #f2f2f2;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-/* Estilos para os itens do menu de filtros */
-.filter-menu a {
-  display: block;
-  padding: 5px 10px;
-  text-decoration: none;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-/* Estilos para os itens do menu de filtros quando hover */
-.filter-menu a:hover {
-  background-color: #ccc;
 }

@@ -1,42 +1,26 @@
 <header *ngIf="UserIsLoggedIn()">
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">TotalControl</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-      >
+  <nav class="row navbar navbar-expand-sm navbar-toggleable-sm " style="white-space: nowrap;">
+      <div class="col-6 text-center">
+        <a class="navbar-brand" [routerLink]="['/']">TotalControl</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="col-6 navbar-collapse collapse d-sm-inline-flex justify-content-center">
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item m-1"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link" [routerLink]="['/']"
-              ><i class="far fa-chart-bar"></i>Dashboard
+          <li class="nav-item m-1" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" [routerLink]="['/']"><i class="far fa-chart-bar"></i>Dashboard
             </a>
           </li>
           <li class="nav-item m-1" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/contas']"
-              ><i class="far fa-money-bill-alt"></i>Contas</a
-            >
+            <a class="nav-link" [routerLink]="['/contas']"><i class="far fa-money-bill-alt"></i>Contas</a>
           </li>
           <li class="nav-item m-1" [routerLinkActive]="['link-active']">
-            <a class="nav-link" [routerLink]="['/usuario']"
-              ><i class="far fa-user"></i>Meus Dados</a
-            >
+            <a class="nav-link" [routerLink]="['/usuario']"><i class="far fa-user"></i>Meus Dados</a>
           </li>
         </ul>
       </div>
-    </div>
   </nav>
   <div class="underline"></div>
 </header>
